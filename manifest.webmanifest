@@ -1,0 +1,31 @@
+{
+  "id": "./",
+  "name": "Abarrotes Leo",
+  "short_name": "Abarrotes Leo",
+  "description": "Inventario, ventas, compras y reportes para una tienda de abarrotes.",
+  "lang": "es-MX",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f5f7f5",
+  "theme_color": "#172b25",
+  "categories": [
+    "business",
+    "productivity"
+  ],
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
