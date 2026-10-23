@@ -1,1 +1,1 @@
-# abarrotes-leo.
+# abarrotes-leo
