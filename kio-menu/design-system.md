@@ -44,3 +44,8 @@ KIO MENÚ es la primera referencia práctica de KIO VISUAL DNA. Esta versión us
 
 ## Límite
 El motor culinario de v0.2 usa reglas locales y recetas predeterminadas, no IA generativa. El costo es orientativo. La PWA está diseñada para ambas plataformas, pero su comportamiento debe confirmarse en iPhone y Android reales antes de considerarla validada en todos los dispositivos.
+
+## Detalle de ilustración y autoría
+- Las recetas y el resumen del día usan ilustraciones pixel art de platos, con textura, contraste y detalle mayores que los pictogramas pequeños de ingredientes.
+- Los pictogramas del inventario siguen siendo más simples a propósito: su objetivo es reconocimiento rápido y control de cantidades, no decoración.
+- Firma visual discreta: **“Una creación de KioRafa × ChatGPT”**; los créditos ampliados de Ajustes explican que KioRafa aporta concepto y dirección creativa, y ChatGPT participa en diseño e implementación.
