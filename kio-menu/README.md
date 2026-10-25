@@ -1,4 +1,4 @@
-# KIO MENÚ v0.2 — Tu cocina, tu aventura
+# KIO MENÚ v0.3 — KIO × RAFA: Tu cocina, tu aventura
 
 Aplicación web progresiva (PWA) con pixel art detallado y navegación tipo expedición culinaria.
 
@@ -55,7 +55,7 @@ HTML, CSS y JavaScript nativos; sin dependencias ni servicios de pago.
 
 ## Pulido visual y créditos
 - Las tarjetas de receta, el menú diario y la vista ampliada utilizan ilustraciones pixel art de platillos con más textura, volumen y color; los iconos de ingredientes permanecen simples para identificarlos rápidamente.
-- La pantalla conserva la firma discreta **“Una creación de KioRafa × ChatGPT”** y, en Ajustes, explica el reparto creativo: concepto y dirección de KioRafa; diseño e implementación en colaboración con ChatGPT.
+- La pantalla conserva la firma discreta **“Una creación de KIO × RAFA”** y, en Ajustes, explica el reparto creativo: concepto y dirección de KioRafa; diseño e implementación en colaboración con ChatGPT.
 - Las ilustraciones de comida se almacenan localmente en `assets/food/` y se incluyen en la caché offline.
 
 ## KIO × RAFA — identidad y pulido v0.3
