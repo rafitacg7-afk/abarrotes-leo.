@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#193c2b">
-<meta name="description" content="Tu cocina, tu aventura. Planea cuatro comidas con pixel art detallado.">
+<meta name="description" content="Una aventura culinaria creada por KIO × RAFA, con pixel art detallado, recetas y una despensa explorable.">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="KIO Menú">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -12,7 +12,7 @@
 <link rel="icon" href="./icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
 <link rel="stylesheet" href="./kio-visual-dna.css">
-<title>KIO MENÚ v0.2 · Tu cocina, tu aventura</title>
+<title>KIO MENÚ v0.3 · KIO × RAFA</title>
 <style>
 :root{
  --forest:#193c2b;--deep:#10291e;--leaf:#2d6442;--leaf-light:#6d9b58;
@@ -339,7 +339,7 @@ function addIngredient(name,qty){const clean=String(name||'').trim().slice(0,40)
 function changeQty(name,delta){const item=getIng(name);if(!item)return;item.qty=Math.max(0,Math.min(999,item.qty+delta));save();renderAll()}
 function removeIngredient(name){state.inventory=state.inventory.filter(x=>norm(x.name)!==norm(name));save();renderAll();toast('Ingrediente quitado de la despensa.')}
 function resetInventory(){if(!confirm('¿Restaurar la despensa de ejemplo? Tus ingredientes actuales serán reemplazados.'))return;state.inventory=DEFAULT_ITEMS.map(x=>Object.assign({},x));save();renderAll();toast('Despensa de ejemplo restaurada.')}
-function swapRecipe(cat){const current=recipeFor(cat),used=state.menuIds.filter(x=>x!==current?.id),remaining=state.budget;const list=recipes.filter(r=>r.cat===cat&&r.id!==current?.id).sort((a,b)=>scoreRecipe(b,remaining,used,true)-scoreRecipe(a,remaining,used,true));const opts=list.map(r=>'<button class="day-card" data-choose="'+r.id+'" style="width:100%;text-align:left;cursor:pointer"><div class="day-icon">'+svgSprite(r.art,42)+'</div><div><span class="day-type">'+r.mins+' MIN · FALTANTES '+money(missCost(r))+'</span><h3 class="day-name">'+esc(r.name)+'</h3><div class="day-desc">'+esc(r.desc)+'</div></div></button>').join('');$('#modalEyebrow').textContent='ELIGE TU SIGUIENTE PASO';$('#modalTitle').textContent='Alternativas para '+categoryNames[cat].toLowerCase();$('#modalBody').innerHTML='<p>Elige otro platillo para esta comida. Las demás misiones se conservan.</p><div class="day-list">'+opts+'</div>';$('#modalBack').classList.remove('hidden')}
+function swapRecipe(cat){const current=recipeFor(cat),used=state.menuIds.filter(x=>x!==current?.id),remaining=state.budget;const list=recipes.filter(r=>r.cat===cat&&r.id!==current?.id).sort((a,b)=>scoreRecipe(b,remaining,used,true)-scoreRecipe(a,remaining,used,true));const opts=list.map(r=>'<button class="day-card" data-choose="'+r.id+'" style="width:100%;text-align:left;cursor:pointer"><div class="day-icon">'+dishArt(r.art,r.name)+'</div><div><span class="day-type">'+r.mins+' MIN · FALTANTES '+money(missCost(r))+'</span><h3 class="day-name">'+esc(r.name)+'</h3><div class="day-desc">'+esc(r.desc)+'</div></div></button>').join('');$('#modalEyebrow').textContent='ELIGE TU SIGUIENTE PASO';$('#modalTitle').textContent='Alternativas para '+categoryNames[cat].toLowerCase();$('#modalBody').innerHTML='<p>Elige otro platillo para esta comida. Las demás misiones se conservan.</p><div class="day-list">'+opts+'</div>';$('#modalBack').classList.remove('hidden')}
 function applySwap(id){const next=recipeById(id);if(!next)return;const old=recipeFor(next.cat);state.menuIds=state.menuIds.filter(x=>x!==old?.id);state.menuIds.push(id);if(old)state.done=state.done.filter(x=>x!==old.id);save();closeModal();renderAll();toast('Nueva misión: '+next.name)}
 function markDone(id){if(state.done.includes(id))state.done=state.done.filter(x=>x!==id);else state.done.push(id);save();closeModal();renderAll();toast(state.done.includes(id)?'Misión completada.':'Misión reabierta.')}
 function addMissing(id){const r=recipeById(id);if(!r)return;missing(r).forEach(name=>{if(!getIng(name))state.inventory.push({name,qty:1,group:groupOf(name),art:artOf(name)});else getIng(name).qty=Math.max(1,getIng(name).qty)});save();closeModal();renderAll();toast('Faltantes añadidos como lista de preparación. Recuerda que aún debes conseguirlos.')}
