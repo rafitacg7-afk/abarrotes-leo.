@@ -57,3 +57,10 @@ HTML, CSS y JavaScript nativos; sin dependencias ni servicios de pago.
 - Las tarjetas de receta, el menú diario y la vista ampliada utilizan ilustraciones pixel art de platillos con más textura, volumen y color; los iconos de ingredientes permanecen simples para identificarlos rápidamente.
 - La pantalla conserva la firma discreta **“Una creación de KioRafa × ChatGPT”** y, en Ajustes, explica el reparto creativo: concepto y dirección de KioRafa; diseño e implementación en colaboración con ChatGPT.
 - Las ilustraciones de comida se almacenan localmente en `assets/food/` y se incluyen en la caché offline.
+
+## KIO × RAFA — identidad y pulido v0.3
+- **Marca:** KIO × RAFA; KIO representa el sistema de diseño, exploración y lógica, y Rafa aporta la visión creativa, el contexto y la dirección del proyecto.
+- **Escenas:** `realm.svg` y `kitchen.svg` son ilustraciones SVG de pixel art de mayor detalle, cargadas por la aplicación y almacenadas en caché para uso offline.
+- **Platillos:** la aplicación genera ilustraciones inline con textura, volumen, sombras y colores por tipo de comida; no depende de un sprite pequeño externo para las tarjetas.
+- **Inventario:** los iconos de ingredientes se mantienen más simples de forma deliberada para facilitar el reconocimiento rápido.
+- **Créditos:** visibles de manera discreta en la interfaz y descritos en Ajustes.
