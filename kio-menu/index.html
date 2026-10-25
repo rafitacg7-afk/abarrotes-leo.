@@ -284,28 +284,159 @@ function money(n){return new Intl.NumberFormat('es-MX',{style:'currency',currenc
 function save(){try{localStorage.setItem(STORAGE,JSON.stringify(state))}catch(e){toast('No se pudieron guardar los cambios en este dispositivo.')}}
 function load(){try{const raw=localStorage.getItem(STORAGE)||localStorage.getItem('kio-menu-state-v2');const x=JSON.parse(raw||'null');if(x&&typeof x==='object'){state=Object.assign(state,x);if(!Array.isArray(state.inventory))state.inventory=DEFAULT_ITEMS.map(a=>Object.assign({},a));if(!Array.isArray(state.menuIds))state.menuIds=[];if(!Array.isArray(state.done))state.done=[];if(!Array.isArray(state.favorites))state.favorites=[];if(!localStorage.getItem(STORAGE))save()}}catch(e){}}
 function toast(message){const el=$('#toast');el.textContent=message;el.classList.remove('hidden');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.add('hidden'),2600)}
-function svgSprite(kind,size){const palettes={egg:['#e5a84d','#fff1c9','#9c6a37'],tortilla:['#dfa95e','#f3d797','#a66a37'],beans:['#7c4531','#a75c3b','#db9f52'],rice:['#f0d9a0','#e4b65d','#85a15b'],oats:['#d6b77a','#f0dca5','#6d9253'],banana:['#e6bd47','#f3d975','#587a3c'],tomato:['#c74d39','#e8784f','#48864c'],onion:['#c9b6a3','#e9d8be','#74945a'],cheese:['#e6b646','#f4d87c','#8aa252'],oil:['#d8a43e','#f1ce6f','#6c8d49'],salt:['#e1e3d5','#fff9e8','#9ca99a'],potato:['#ba8d58','#e0b77e','#7a9853'],taco:['#d8a052','#f1d38a','#bf5940'],bread:['#ad7042','#e4bb7e','#668b50'],pasta:['#e5bd65','#f5dc96','#bd5940'],soup:['#c75b3f','#df8a4f','#f0d289'],plate:['#94b5bd','#e5f1d8','#dca044'],sun:['#e6b64b','#ffe99b','#d27742'],moon:['#dbd7a9','#eaf0d2','#526f87']};const p=palettes[kind]||palettes.potato;let s='<svg class="food-sprite" viewBox="0 0 64 64" aria-hidden="true" shape-rendering="crispEdges"><rect x="12" y="12" width="40" height="40" fill="#294d34"/><rect x="8" y="18" width="48" height="30" fill="#fff5da"/>';
-if(kind==='egg'){s+='<rect x="17" y="18" width="14" height="26" fill="'+p[1]+'"/><rect x="21" y="15" width="11" height="8" fill="'+p[1]+'"/><rect x="21" y="27" width="6" height="7" fill="'+p[0]+'"/><rect x="34" y="23" width="14" height="21" fill="'+p[1]+'"/><rect x="36" y="19" width="10" height="7" fill="'+p[1]+'"/><rect x="37" y="29" width="7" height="7" fill="'+p[0]+'"/>'}
-else if(kind==='tortilla'||kind==='taco'){s+='<rect x="14" y="27" width="36" height="16" fill="'+p[0]+'"/><rect x="18" y="22" width="27" height="15" fill="'+p[1]+'"/><rect x="22" y="20" width="20" height="7" fill="'+p[0]+'"/><rect x="22" y="29" width="23" height="5" fill="'+p[2]+'"/><rect x="20" y="34" width="25" height="6" fill="'+p[2]+'"/><rect x="16" y="41" width="35" height="5" fill="'+p[0]+'"/>'}
-else if(kind==='beans'){s+='<rect x="14" y="21" width="36" height="23" fill="'+p[0]+'"/><rect x="18" y="17" width="28" height="8" fill="'+p[1]+'"/><rect x="18" y="27" width="8" height="6" fill="'+p[2]+'"/><rect x="31" y="31" width="9" height="5" fill="'+p[2]+'"/><rect x="25" y="38" width="7" height="4" fill="'+p[1]+'"/>'}
-else if(kind==='rice'||kind==='oats'){s+='<rect x="14" y="31" width="36" height="13" fill="'+p[0]+'"/><rect x="17" y="26" width="30" height="8" fill="'+p[1]+'"/><rect x="21" y="19" width="22" height="10" fill="'+p[0]+'"/><rect x="27" y="22" width="4" height="4" fill="'+p[2]+'"/><rect x="36" y="29" width="4" height="4" fill="'+p[2]+'"/><rect x="20" y="36" width="4" height="4" fill="'+p[2]+'"/>'}
-else if(kind==='banana'){s+='<rect x="17" y="24" width="7" height="18" fill="'+p[2]+'"/><rect x="23" y="22" width="8" height="17" fill="'+p[0]+'"/><rect x="31" y="25" width="8" height="16" fill="'+p[1]+'"/><rect x="39" y="30" width="8" height="10" fill="'+p[0]+'"/><rect x="22" y="40" width="19" height="5" fill="'+p[0]+'"/>'}
-else if(kind==='tomato'){s+='<rect x="17" y="22" width="30" height="24" fill="'+p[0]+'"/><rect x="22" y="17" width="20" height="8" fill="'+p[1]+'"/><rect x="25" y="15" width="7" height="6" fill="'+p[2]+'"/><rect x="31" y="18" width="10" height="6" fill="'+p[2]+'"/><rect x="21" y="28" width="5" height="8" fill="'+p[1]+'"/>'}
-else if(kind==='onion'){s+='<rect x="19" y="24" width="26" height="20" fill="'+p[0]+'"/><rect x="23" y="18" width="18" height="10" fill="'+p[1]+'"/><rect x="27" y="14" width="9" height="6" fill="'+p[2]+'"/><rect x="24" y="31" width="4" height="8" fill="'+p[1]+'"/><rect x="35" y="27" width="4" height="9" fill="'+p[1]+'"/>'}
-else if(kind==='cheese'){s+='<path d="M15 26 35 17 50 26 50 43 15 43Z" fill="'+p[0]+'"/><rect x="26" y="28" width="7" height="7" fill="'+p[1]+'"/><rect x="39" y="33" width="5" height="5" fill="'+p[2]+'"/><rect x="35" y="22" width="7" height="5" fill="'+p[1]+'"/>'}
-else if(kind==='oil'){s+='<rect x="25" y="15" width="15" height="9" fill="'+p[2]+'"/><rect x="20" y="24" width="25" height="23" fill="'+p[0]+'"/><rect x="24" y="28" width="16" height="7" fill="'+p[1]+'"/><rect x="24" y="39" width="16" height="4" fill="'+p[2]+'"/>'}
-else if(kind==='salt'){s+='<rect x="21" y="22" width="23" height="24" fill="'+p[0]+'"/><rect x="24" y="16" width="17" height="7" fill="'+p[2]+'"/><rect x="26" y="29" width="13" height="8" fill="'+p[1]+'"/><rect x="26" y="25" width="4" height="3" fill="'+p[2]+'"/>'}
-else if(kind==='bread'){s+='<rect x="16" y="20" width="32" height="24" fill="'+p[0]+'"/><rect x="21" y="15" width="22" height="8" fill="'+p[1]+'"/><rect x="21" y="27" width="5" height="7" fill="'+p[1]+'"/><rect x="34" y="31" width="8" height="7" fill="'+p[1]+'"/>'}
-else if(kind==='pasta'){s+='<rect x="17" y="20" width="30" height="6" fill="'+p[0]+'"/><rect x="20" y="27" width="25" height="6" fill="'+p[1]+'"/><rect x="17" y="34" width="30" height="6" fill="'+p[0]+'"/><rect x="22" y="41" width="20" height="5" fill="'+p[1]+'"/>'}
-else if(kind==='soup'){s+='<rect x="15" y="26" width="34" height="17" fill="'+p[0]+'"/><rect x="12" y="23" width="40" height="6" fill="'+p[1]+'"/><rect x="20" y="19" width="7" height="6" fill="'+p[2]+'"/><rect x="33" y="18" width="8" height="6" fill="'+p[2]+'"/><rect x="21" y="33" width="7" height="5" fill="'+p[1]+'"/>'}
-else if(kind==='sun'){s+='<rect x="26" y="12" width="12" height="9" fill="'+p[0]+'"/><rect x="16" y="22" width="32" height="20" fill="'+p[1]+'"/><rect x="22" y="28" width="20" height="8" fill="'+p[2]+'"/><rect x="28" y="22" width="8" height="20" fill="'+p[0]+'"/>'}
-else if(kind==='moon'){s+='<rect x="20" y="16" width="22" height="30" fill="'+p[0]+'"/><rect x="28" y="12" width="16" height="25" fill="#fff5da"/><rect x="17" y="25" width="7" height="11" fill="'+p[2]+'"/>'}
-else if(kind==='potato'){s+='<rect x="16" y="24" width="32" height="18" fill="'+p[0]+'"/><rect x="20" y="19" width="24" height="10" fill="'+p[1]+'"/><rect x="24" y="29" width="4" height="4" fill="'+p[2]+'"/><rect x="37" y="34" width="5" height="4" fill="'+p[2]+'"/>'}
-else{s+='<rect x="18" y="21" width="28" height="23" fill="'+p[0]+'"/><rect x="23" y="16" width="17" height="8" fill="'+p[1]+'"/><rect x="25" y="29" width="13" height="6" fill="'+p[2]+'"/>'}
-s+='<rect x="7" y="49" width="50" height="5" fill="#294d34"/></svg>';return s}
+function svgSprite(kind,size){return ingredientSprite(kind,groupOf(kind))}
 function iconSvg(name){const paths={sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',bowl:'<path d="M3 12h18a9 9 0 0 1-18 0Z"/><path d="M7 8c0-2 2-2 2-4m5 4c0-2 2-2 2-4"/>',plate:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><path d="M3 3v6m-2-6v6m4-6v6M21 3v18"/>',moon:'<path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z"/><path d="m17 3 1 2 2 1-2 1-1 2-1-2-2-1 2-1Z"/>'};return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true">'+(paths[name]||paths.plate)+'</svg>'}
-function dishArt(kind,label){const files={egg:'egg',oats:'oats',taco:'tacos',tortilla:'quesadilla',cheese:'quesadilla',bread:'sandwich',rice:'ricebeans',plate:'chickensalad',beans:'enfrijoladas',soup:'soup',pasta:'pasta',potato:'potatoegg'};const spots={egg:[0,0],chilaquiles:[1,0],oats:[2,0],tacos:[3,0],sandwich:[0,1],soup:[1,1],quesadilla:[2,1],enfrijoladas:[3,1],ricebeans:[0,2],potatoegg:[1,2],pasta:[2,2],chickensalad:[3,2]};const file=files[kind]||'chilaquiles',p=spots[file]||spots.chilaquiles;const pos=(p[0]*100/3).toFixed(3)+'% '+(p[1]*50)+'%';return '<div class="dish-illustration" role="img" aria-label="'+esc(label||'Platillo')+'" style="background-position:'+pos+'"></div>'}
-function ingredientSprite(name,group){return svgSprite(artOf(name),53)}
+function dishArt(kind,label){
+ const text=norm((label||'')+' '+(kind||''));
+ let file='chilaquiles';
+ if(/avena|oats/.test(text))file='oats';
+ else if(/huevo|egg|papa|potato/.test(text))file='egg';
+ else if(/taco|quesadilla|tortilla|enfrijolada|frijol/.test(text))file=/frijol|enfrijolada/.test(text)?'chilaquiles':'tacos';
+ else if(/pan|sandwich/.test(text))file='sandwich';
+ else if(/sopa|soup|caldo/.test(text))file='soup';
+ else if(/pasta|arroz|rice|pollo|ensalada|salad|verdura/.test(text))file='salad';
+ else if(/chilaquil/.test(text))file='chilaquiles';
+ const alt=esc(label||'Platillo de KIO MENÚ');
+ return '<img class="dish-art-img" src="./assets/food/'+file+'.webp" alt="'+alt+'" loading="lazy" decoding="async" width="320" height="240">';
+}
+function ingredientSprite(name,group){
+ const n=norm(name);
+ let kind='basket';
+ if(/tomate|jitomate/.test(n))kind='tomato';
+ else if(/cebolla/.test(n))kind='onion';
+ else if(/ajo/.test(n))kind='garlic';
+ else if(/zanahoria/.test(n))kind='carrot';
+ else if(/espinaca|lechuga|cilantro|perejil|verdura|brocoli|brócoli|calabacita/.test(n))kind='greens';
+ else if(/huevo/.test(n))kind='egg';
+ else if(/queso/.test(n))kind='cheese';
+ else if(/tortilla|tostada/.test(n))kind='tortilla';
+ else if(/frijol|frijoles/.test(n))kind='beans';
+ else if(/arroz/.test(n))kind='rice';
+ else if(/avena/.test(n))kind='oats';
+ else if(/platano|plátano|banana/.test(n))kind='banana';
+ else if(/aguacate/.test(n))kind='avocado';
+ else if(/limon|limón|naranja|lim[aó]n/.test(n))kind='citrus';
+ else if(/papa|patata/.test(n))kind='potato';
+ else if(/pan|bolillo/.test(n))kind='bread';
+ else if(/pasta|espagueti/.test(n))kind='pasta';
+ else if(/aceite/.test(n))kind='oil';
+ else if(/sal$/.test(n))kind='salt';
+ else if(/pollo|carne|res|cerdo|jamon|jamón|salchicha/.test(n))kind='chicken';
+ else if(/atun|atún|pescado|sardina/.test(n))kind='fish';
+ else if(/pepino|calabaza/.test(n))kind='cucumber';
+ else if(/chile/.test(n))kind='chile';
+ else if(/manzana/.test(n))kind='apple';
+ else if(/fresa|frutilla/.test(n))kind='berry';
+ else if(/leche/.test(n))kind='milk';
+ else if(/yogur/.test(n))kind='yogurt';
+ else if(/harina/.test(n))kind='flour';
+ else if(/canela|comino|pimienta|especia/.test(n))kind='spice';
+ else if(/azucar|azúcar/.test(n))kind='sugar';
+ else if(group==='fruta')kind='fruit';
+ else if(group==='verdura')kind='greens';
+ else if(group==='proteina')kind='egg';
+ else if(group==='grano')kind='rice';
+ const head='<svg class="food-sprite kio-food-art" viewBox="0 0 96 96" role="img" aria-label="'+esc(titleCase(name))+'" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges"><defs>'+
+ '<linearGradient id="kioRed" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ff9970"/><stop offset=".38" stop-color="#e75e42"/><stop offset="1" stop-color="#9f302d"/></linearGradient>'+
+ '<linearGradient id="kioGold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffe79b"/><stop offset=".45" stop-color="#e9b54c"/><stop offset="1" stop-color="#a76b2e"/></linearGradient>'+
+ '<linearGradient id="kioLeaf" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b4d87a"/><stop offset=".45" stop-color="#4f914b"/><stop offset="1" stop-color="#215539"/></linearGradient>'+
+ '<linearGradient id="kioCream" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fffbe2"/><stop offset="1" stop-color="#d9c79a"/></linearGradient>'+
+ '<linearGradient id="kioBrown" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b8784d"/><stop offset="1" stop-color="#643b2a"/></linearGradient>'+
+ '<pattern id="kioGrain" width="9" height="8" patternUnits="userSpaceOnUse"><rect width="9" height="8" fill="#e5c078"/><rect x="2" y="2" width="3" height="2" fill="#fff0b5"/><rect x="6" y="5" width="2" height="2" fill="#a7763d"/></pattern>'+
+ '</defs><ellipse cx="48" cy="83" rx="30" ry="6" fill="#153321" opacity=".24"/>';
+ let art='';
+ switch(kind){
+ case 'tomato':
+  art='<path d="M48 24 39 17 33 26 24 25 29 34Q17 38 18 52 19 69 36 74 48 80 60 73 78 69 78 51 77 37 64 33L63 24 54 28Z" fill="url(#kioRed)" stroke="#783b2c" stroke-width="3"/><path d="M47 27 39 20 36 29 28 30 38 36 48 31 57 37 68 30 59 28 57 22 51 28Z" fill="url(#kioLeaf)" stroke="#2e6540" stroke-width="2"/><path d="M29 43Q26 53 31 58" fill="none" stroke="#ffbd91" stroke-width="4"/><rect x="35" y="39" width="5" height="4" fill="#ffd0a2"/><rect x="59" y="58" width="6" height="4" fill="#c34335"/><rect x="39" y="68" width="6" height="3" fill="#d94a39"/>';
+  break;
+ case 'onion':
+  art='<path d="M48 20 41 28 31 34 24 47 27 63 38 73 48 78 59 73 70 62 72 47 65 34 55 28Z" fill="#d5bfa8" stroke="#765a47" stroke-width="3"/><path d="M48 23 44 38 38 48 40 65 48 74 56 65 58 48 52 38Z" fill="#eee0c4" stroke="#ab9074" stroke-width="2"/><path d="M48 22Q48 15 54 13M49 27Q37 32 34 45M58 34Q66 46 63 58" fill="none" stroke="#f7ebd5" stroke-width="3"/><path d="M46 20 48 11 51 22" fill="none" stroke="#81965d" stroke-width="3"/><rect x="31" y="52" width="4" height="5" fill="#bd9d80"/><rect x="57" y="57" width="4" height="4" fill="#c3a488"/>';
+  break;
+ case 'garlic':
+  art='<path d="M47 30 40 21 43 15 49 23 54 17 59 22 54 31Q66 31 70 43 75 59 61 72L49 78 37 73Q22 63 28 46 32 34 47 30Z" fill="#e7ddc5" stroke="#796c59" stroke-width="3"/><path d="M47 31Q33 37 34 53L43 69 49 76 48 42Z" fill="#fff6df" stroke="#b9a78b" stroke-width="2"/><path d="M53 34Q66 39 63 54L54 69 49 76 51 43Z" fill="#d7c8ad" stroke="#9b886e" stroke-width="2"/><path d="M36 42 31 49M61 45 66 52" stroke="#fff8e4" stroke-width="3"/><rect x="43" y="55" width="4" height="7" fill="#f8efdc"/>';
+  break;
+ case 'carrot':
+  art='<path d="M29 30 67 34 57 57 43 77 36 68 29 48Z" fill="url(#kioRed)" stroke="#843f2a" stroke-width="3"/><path d="M32 34 61 37 55 51 40 71" fill="none" stroke="#ffb469" stroke-width="4"/><path d="M43 33 43 42M51 37 47 45M45 54 40 62" stroke="#b95032" stroke-width="3"/><path d="M31 33 20 17 24 14 38 29M39 31 39 12 44 12 46 30M48 31 60 16 64 19 54 34M52 31 70 25 70 29 53 38" fill="url(#kioLeaf)" stroke="#315d39" stroke-width="3"/><rect x="39" y="42" width="4" height="4" fill="#ffd08a"/>';
+  break;
+ case 'greens':
+  art='<path d="M44 76Q34 59 24 48 17 34 28 26 39 21 45 42 39 20 51 16 64 17 61 43 72 25 81 34 89 45 68 57L55 76Z" fill="url(#kioLeaf)" stroke="#28583a" stroke-width="3"/><path d="M48 76 39 48M50 59 29 34M50 50 55 26M53 64 75 39" fill="none" stroke="#c3df89" stroke-width="3"/><path d="M28 32 35 31 39 39M55 24 60 29 57 37M73 37 72 44 65 48" fill="none" stroke="#d6eb9b" stroke-width="2"/><rect x="35" y="59" width="5" height="4" fill="#367347"/><rect x="64" y="53" width="6" height="4" fill="#4a8646"/>';
+  break;
+ case 'egg':
+  art='<ellipse cx="37" cy="48" rx="17" ry="25" fill="url(#kioCream)" stroke="#9c8864" stroke-width="3" transform="rotate(-14 37 48)"/><ellipse cx="60" cy="47" rx="16" ry="24" fill="#f7efd9" stroke="#9c8864" stroke-width="3" transform="rotate(15 60 47)"/><path d="M35 28Q28 40 32 51" fill="none" stroke="#fffdf0" stroke-width="4"/><path d="M58 28Q68 41 63 50" fill="none" stroke="#fffdf0" stroke-width="4"/><path d="M23 64 35 56 45 63 55 56 67 64 65 75 25 75Z" fill="#fff5d8" stroke="#a39272" stroke-width="3"/><ellipse cx="46" cy="64" rx="12" ry="9" fill="url(#kioGold)" stroke="#a96b2c" stroke-width="2"/><rect x="41" y="59" width="7" height="3" fill="#fff1a9"/><rect x="57" y="69" width="4" height="3" fill="#e7d8b3"/>';
+  break;
+ case 'cheese':
+  art='<path d="M18 44 51 20 78 40 76 70 18 70Z" fill="url(#kioGold)" stroke="#8f6335" stroke-width="3"/><path d="M18 44 52 54 76 40" fill="none" stroke="#fff0b8" stroke-width="3"/><path d="M18 44 18 70 52 81 76 70 76 40 52 54Z" fill="#dda13b" stroke="#8f6335" stroke-width="3"/><ellipse cx="44" cy="54" rx="5" ry="6" fill="#f8de8a" stroke="#ad7934" stroke-width="2"/><ellipse cx="64" cy="64" rx="4" ry="5" fill="#f8de8a" stroke="#ad7934" stroke-width="2"/><ellipse cx="57" cy="37" rx="5" ry="4" fill="#ffe89d"/><rect x="27" y="58" width="5" height="4" fill="#bf7c30"/>';
+  break;
+ case 'tortilla':
+  art='<ellipse cx="48" cy="64" rx="31" ry="15" fill="#aa7a45" stroke="#715039" stroke-width="3"/><ellipse cx="48" cy="59" rx="31" ry="15" fill="#efd18a" stroke="#9d733f" stroke-width="3"/><ellipse cx="48" cy="50" rx="31" ry="15" fill="#d9b46d" stroke="#9d733f" stroke-width="3"/><ellipse cx="48" cy="42" rx="29" ry="14" fill="#f1d791" stroke="#9d733f" stroke-width="3"/><path d="M28 39Q39 31 51 36M58 44 67 40M36 50 44 47M51 56 63 52" fill="none" stroke="#c28c4a" stroke-width="3"/><rect x="37" y="38" width="5" height="3" fill="#fff0b8"/><rect x="57" y="49" width="4" height="3" fill="#c18b49"/><rect x="30" y="58" width="5" height="3" fill="#d4a45f"/>';
+  break;
+ case 'beans':
+  art='<path d="M16 48Q16 35 27 32H68Q81 36 80 48L73 68Q49 82 25 68Z" fill="#d8b47b" stroke="#6b4933" stroke-width="3"/><ellipse cx="48" cy="46" rx="32" ry="18" fill="#713c2b" stroke="#543329" stroke-width="3"/><g fill="#a85b3c" stroke="#472a22" stroke-width="2"><ellipse cx="30" cy="44" rx="7" ry="5"/><ellipse cx="44" cy="35" rx="7" ry="5"/><ellipse cx="60" cy="43" rx="7" ry="5"/><ellipse cx="39" cy="51" rx="7" ry="5"/><ellipse cx="56" cy="54" rx="7" ry="5"/><ellipse cx="69" cy="35" rx="6" ry="5"/></g><g fill="#f0af73"><rect x="26" y="42" width="4" height="2"/><rect x="42" y="33" width="4" height="2"/><rect x="58" y="41" width="4" height="2"/><rect x="37" y="49" width="4" height="2"/></g><path d="M21 62Q48 76 74 62" fill="none" stroke="#f2d79a" stroke-width="3"/>';
+  break;
+ case 'rice':
+  art='<path d="M15 53Q18 76 48 78 77 76 81 53Z" fill="url(#kioCream)" stroke="#826442" stroke-width="3"/><ellipse cx="48" cy="53" rx="34" ry="18" fill="#f5e4ba" stroke="#9b7950" stroke-width="3"/><g fill="#fff8dc" stroke="#ddc78f" stroke-width="1.5"><rect x="25" y="43" width="8" height="4" transform="rotate(-18 25 43)"/><rect x="38" y="36" width="9" height="4" transform="rotate(12 38 36)"/><rect x="55" y="42" width="8" height="4" transform="rotate(-28 55 42)"/><rect x="33" y="52" width="9" height="4" transform="rotate(18 33 52)"/><rect x="49" y="49" width="9" height="4" transform="rotate(-10 49 49)"/><rect x="63" y="52" width="7" height="4" transform="rotate(25 63 52)"/></g><path d="M43 42 47 30 52 41M47 43 58 32 59 43" fill="none" stroke="#6a994e" stroke-width="3"/><rect x="46" y="31" width="4" height="4" fill="#a6c66b"/>';
+  break;
+ case 'oats':
+  art='<path d="M16 51Q20 74 48 77 76 74 80 51Z" fill="#d8b57e" stroke="#7b5c3b" stroke-width="3"/><ellipse cx="48" cy="51" rx="33" ry="18" fill="#f2dfa9" stroke="#a07b4a" stroke-width="3"/><g fill="#cfa86d" stroke="#ad834c" stroke-width="1.5"><rect x="25" y="44" width="12" height="5" transform="rotate(-20 25 44)"/><rect x="40" y="37" width="12" height="5" transform="rotate(18 40 37)"/><rect x="54" y="45" width="12" height="5" transform="rotate(-12 54 45)"/><rect x="34" y="54" width="12" height="5" transform="rotate(20 34 54)"/><rect x="52" y="54" width="11" height="5" transform="rotate(-18 52 54)"/></g><path d="M56 36Q65 28 69 37L67 45 58 46Z" fill="#e7bd52" stroke="#9b7333" stroke-width="2"/><rect x="60" y="34" width="4" height="3" fill="#ffeb9c"/><rect x="40" y="45" width="4" height="3" fill="#739d4f"/>';
+  break;
+ case 'banana':
+  art='<path d="M20 30Q28 62 50 65 67 66 77 42L71 36Q61 55 48 55 32 54 28 29Z" fill="#e8c446" stroke="#927237" stroke-width="3"/><path d="M27 31Q35 54 50 58 64 58 72 40" fill="none" stroke="#fff0a0" stroke-width="4"/><path d="M29 29Q42 48 53 49 61 49 69 37" fill="none" stroke="#b4882f" stroke-width="2"/><path d="M21 28 28 25 31 31 27 35Z" fill="#5a6937" stroke="#3b4b2c" stroke-width="2"/><path d="M72 39 79 37 81 43 75 46Z" fill="#5a6937" stroke="#3b4b2c" stroke-width="2"/><rect x="42" y="50" width="5" height="3" fill="#f7d75f"/><rect x="55" y="56" width="5" height="3" fill="#d8af3f"/>';
+  break;
+ case 'avocado':
+  art='<path d="M48 18Q36 18 30 34L21 53Q17 67 31 75 48 85 65 74 80 64 72 47L61 29Q56 19 48 18Z" fill="#315b3e" stroke="#203d2b" stroke-width="3"/><path d="M48 23Q39 24 35 38L27 54Q23 65 35 71 49 79 62 70 73 62 66 48L57 31Q53 23 48 23Z" fill="#8db75e"/><path d="M48 29Q42 35 38 48L33 58Q31 65 41 69 51 74 60 67 66 61 61 51L55 36Q52 30 48 29Z" fill="#c6d97a"/><ellipse cx="49" cy="57" rx="11" ry="13" fill="#8b5133" stroke="#593523" stroke-width="3"/><ellipse cx="46" cy="52" rx="4" ry="5" fill="#c68a54"/><rect x="34" y="37" width="4" height="4" fill="#d8e995"/>';
+  break;
+ case 'citrus':
+  art='<circle cx="46" cy="51" r="28" fill="#f0a832" stroke="#9f622a" stroke-width="3"/><circle cx="46" cy="51" r="21" fill="#ffe08b" stroke="#fff1bf" stroke-width="3"/><circle cx="46" cy="51" r="4" fill="#fff7d2"/><path d="M46 30V47M46 55V72M25 51H42M50 51H67M31 36 43 48M49 55 61 67M31 66 43 54M50 48 62 36" stroke="#e4aa45" stroke-width="3"/><path d="M45 23 53 17 58 22" fill="none" stroke="#4e8745" stroke-width="4"/><rect x="34" y="30" width="6" height="3" fill="#fff0b5"/>';
+  break;
+ case 'potato':
+  art='<path d="M19 46Q18 31 31 28L43 23 56 28Q70 29 76 43L72 59Q62 72 46 71L28 65Q16 59 19 46Z" fill="url(#kioBrown)" stroke="#69452f" stroke-width="3"/><path d="M26 43Q28 33 40 31" fill="none" stroke="#dca77b" stroke-width="4"/><g fill="#603b2b"><rect x="37" y="43" width="4" height="4"/><rect x="58" y="51" width="4" height="4"/><rect x="30" y="56" width="4" height="4"/></g><g fill="#e4bb85"><rect x="36" y="42" width="3" height="2"/><rect x="57" y="50" width="3" height="2"/><rect x="29" y="55" width="3" height="2"/></g><path d="M42 24 47 19 52 25" fill="none" stroke="#668448" stroke-width="3"/>';
+  break;
+ case 'bread':
+  art='<path d="M23 40Q20 23 39 22L59 22Q75 23 75 40V67H23Z" fill="url(#kioBrown)" stroke="#5d3929" stroke-width="3"/><path d="M28 40Q28 29 40 28H58Q69 29 69 40V62H28Z" fill="#e3b574" stroke="#9c663d" stroke-width="3"/><path d="M35 31Q31 38 35 44M47 29Q43 37 47 43M58 31Q54 38 58 44" fill="none" stroke="#fff0c1" stroke-width="3"/><rect x="31" y="51" width="5" height="4" fill="#bf874c"/><rect x="60" y="54" width="4" height="5" fill="#bd8249"/><rect x="40" y="62" width="16" height="4" fill="#f5d59a"/>';
+  break;
+ case 'pasta':
+  art='<path d="M25 42Q19 30 29 28T39 38T48 29T60 38T69 31T73 45Q70 60 61 63H34Q23 59 25 42Z" fill="#e7b84c" stroke="#9b682f" stroke-width="3"/><path d="M30 40Q27 33 34 34T40 45T48 36T55 45T64 37T68 47M31 49Q38 42 43 51T55 50T66 52" fill="none" stroke="#fff0a6" stroke-width="4"/><rect x="30" y="57" width="5" height="4" fill="#c68a34"/><rect x="56" y="58" width="6" height="4" fill="#d39637"/><rect x="43" y="29" width="6" height="4" fill="#f6d875"/>';
+  break;
+ case 'oil':
+  art='<path d="M40 21H57V30L64 37V70Q48 79 31 70V37L38 30Z" fill="#4c6d41" stroke="#243d2c" stroke-width="3"/><path d="M36 39H60V68Q48 73 36 68Z" fill="url(#kioGold)"/><rect x="39" y="15" width="19" height="8" fill="#8b5932" stroke="#5e3b2a" stroke-width="2"/><rect x="40" y="43" width="16" height="16" fill="#fff0c4" stroke="#976934" stroke-width="2"/><path d="M43 46H53M43 50H51M43 54H53" stroke="#a4783f" stroke-width="2"/><path d="M39 40 43 36" stroke="#fff0a9" stroke-width="3"/>';
+  break;
+ case 'salt':
+  art='<path d="M31 33H65L69 69Q48 78 27 69Z" fill="url(#kioCream)" stroke="#8e8e7a" stroke-width="3"/><rect x="31" y="24" width="34" height="12" fill="#a7ada1" stroke="#687569" stroke-width="3"/><rect x="36" y="17" width="24" height="7" fill="#dfe3d4" stroke="#8d9a8e" stroke-width="2"/><rect x="35" y="43" width="26" height="17" fill="#fffdf0" stroke="#d6d9ca" stroke-width="2"/><g fill="#9da99a"><rect x="39" y="20" width="3" height="2"/><rect x="46" y="20" width="3" height="2"/><rect x="53" y="20" width="3" height="2"/></g><rect x="40" y="48" width="16" height="3" fill="#ebeadc"/>';
+  break;
+ case 'chicken':
+  art='<path d="M30 31Q42 20 56 32L65 44Q70 56 59 65L45 71Q33 71 26 60L22 48Q21 38 30 31Z" fill="url(#kioGold)" stroke="#855334" stroke-width="3"/><path d="M29 39Q35 30 45 35L55 45Q62 54 50 61L40 64Q31 61 29 51Z" fill="#f2d8a0"/><path d="M57 59 67 69 73 63 77 70 70 79 62 74 51 67Z" fill="#fff2dc" stroke="#8b6c4d" stroke-width="3"/><rect x="35" y="36" width="5" height="4" fill="#fff3c9"/><rect x="47" y="51" width="5" height="4" fill="#dca044"/><rect x="39" y="56" width="4" height="3" fill="#e9c281"/>';
+  break;
+ case 'fish':
+  art='<path d="M18 49Q32 27 55 36L70 27 68 43 78 49 68 55 70 71 55 61Q31 71 18 49Z" fill="#8fbfc5" stroke="#3e6e75" stroke-width="3"/><path d="M24 48Q39 33 57 41" fill="none" stroke="#d8f1e5" stroke-width="4"/><path d="M40 40 50 49 40 57Z" fill="#d6e7d2"/><circle cx="59" cy="46" r="3" fill="#203b37"/><circle cx="60" cy="45" r="1" fill="#fff9d9"/><rect x="28" y="51" width="5" height="3" fill="#4f9198"/>';
+  break;
+ case 'cucumber':
+  art='<path d="M28 27Q19 33 22 48L28 66Q32 74 43 70L64 58Q75 51 68 39L59 27Q52 22 42 28Z" fill="#5e9a4e" stroke="#285a3c" stroke-width="3"/><path d="M29 35Q26 45 33 58" fill="none" stroke="#9bc86b" stroke-width="4"/><g fill="#a8cf77"><rect x="37" y="34" width="5" height="4"/><rect x="51" y="42" width="5" height="4"/><rect x="43" y="55" width="5" height="4"/></g><rect x="30" y="26" width="6" height="4" fill="#d5e5a0"/>';
+  break;
+ case 'chile':
+  art='<path d="M24 34Q34 31 43 39L60 56Q67 64 58 69L48 69Q32 57 26 45Z" fill="#c84235" stroke="#6f3929" stroke-width="3"/><path d="M25 34 19 24 24 23 31 32" fill="url(#kioLeaf)" stroke="#2f5b39" stroke-width="2"/><path d="M30 38Q34 43 39 46" fill="none" stroke="#f78960" stroke-width="3"/><rect x="45" y="56" width="5" height="4" fill="#9b302b"/>';
+  break;
+ case 'apple':
+ case 'berry':
+ case 'fruit':
+  art='<path d="M47 31Q37 22 27 31 15 39 22 57 29 74 42 73L48 69 55 73Q68 74 75 56 82 39 67 31 57 26 48 33Z" fill="'+(kind==='berry'?'#cf4e65':'#df5a3f')+'" stroke="#753d31" stroke-width="3"/><path d="M48 33Q48 23 53 17" fill="none" stroke="#5f482d" stroke-width="4"/><path d="M51 23Q62 12 68 20 63 28 51 26Z" fill="url(#kioLeaf)" stroke="#35613b" stroke-width="2"/><path d="M27 42Q26 51 32 56" fill="none" stroke="#ffab8b" stroke-width="4"/><rect x="34" y="39" width="4" height="3" fill="#ffd4ac"/><rect x="62" y="60" width="4" height="4" fill="#b23f3d"/>';
+  break;
+ case 'milk':
+ case 'yogurt':
+  art='<path d="M31 28 38 20H57L64 28V72Q48 78 31 72Z" fill="'+(kind==='milk'?'#e8eee1':'#ead9b6')+'" stroke="#718477" stroke-width="3"/><path d="M31 37H64V47H31Z" fill="'+(kind==='milk'?'#80b8c2':'#dca044')+'"/><rect x="37" y="14" width="21" height="7" fill="#d8e3d3" stroke="#718477" stroke-width="2"/><rect x="38" y="51" width="18" height="11" fill="#fff9df" stroke="#a6b4a1" stroke-width="2"/><path d="M42 55H53M42 59H50" stroke="#719778" stroke-width="2"/><rect x="35" y="31" width="6" height="3" fill="#fff9e6"/>';
+  break;
+ case 'flour':
+ case 'sugar':
+  art='<path d="M28 38 34 28H62L68 38 64 71Q48 78 32 71Z" fill="#e9dfc4" stroke="#97866b" stroke-width="3"/><rect x="32" y="34" width="32" height="10" fill="#c9a36a" stroke="#80613f" stroke-width="2"/><path d="M35 51H61V64H35Z" fill="#fff5d9" stroke="#d1c6a8" stroke-width="2"/><g fill="#fffdf0"><rect x="39" y="54" width="4" height="3"/><rect x="47" y="58" width="4" height="3"/><rect x="55" y="53" width="3" height="3"/></g><rect x="36" y="29" width="25" height="4" fill="#f8efd8"/>';
+  break;
+ case 'spice':
+  art='<rect x="32" y="32" width="32" height="40" fill="#b65b35" stroke="#5b3929" stroke-width="3"/><rect x="36" y="23" width="24" height="10" fill="#8d5837" stroke="#5b3929" stroke-width="3"/><rect x="36" y="40" width="24" height="17" fill="#f3d7a2" stroke="#91643c" stroke-width="2"/><path d="M40 45H55M40 50H52" stroke="#c48348" stroke-width="2"/><rect x="40" y="61" width="15" height="4" fill="#883e2d"/>';
+  break;
+ default:
+  art='<path d="M18 51 28 29 45 36 54 24 77 45 73 65 49 73Z" fill="#b9824f" stroke="#65462f" stroke-width="3"/><path d="M22 48 34 34 44 42 55 31 70 48 65 62 48 67Z" fill="#d5ba79"/><path d="M28 45 33 40 37 44M55 40 62 47M43 54 50 49" fill="none" stroke="#f5dfaa" stroke-width="3"/><rect x="35" y="61" width="5" height="4" fill="#5a9149"/><rect x="58" y="56" width="5" height="4" fill="#6a9a52"/>';
+ }
+ return head+art+'</svg>';
+}
+
 function categoryIcon(cat){return iconSvg(cats.find(x=>x.id===cat)?.icon||'plate')}
 function modeLabel(){return ({ahorro:'MODO AHORRO',equilibrio:'MODO BALANCE',sorpresa:'MODO EXPLORADOR',rapido:'MODO EXPRÉS'})[state.mode]||'MODO AHORRO'}
 function setView(view){state.view=view;save();$$('.page').forEach(x=>x.classList.toggle('active',x.id==='page-'+(view==='mapa'?'map':view==='dia'?'dia':view)));$$('.nav-item').forEach(x=>x.classList.toggle('active',x.dataset.view===view));if(view==='despensa')renderInventory();if(view==='recetas')renderRecipes();if(view==='dia')renderDay();if(view==='mapa')renderMap();window.scrollTo({top:0,behavior:'smooth'})}
@@ -322,7 +453,40 @@ function renderMiniInventory(){const list=state.inventory.filter(x=>x.qty>0).sli
 function renderInventoryStrip(){const list=state.inventory.filter(x=>x.qty>0).slice(0,12);$('#inventoryStrip').innerHTML=list.length?list.map(x=>'<button class="ingredient-object" data-ing="'+esc(x.name)+'">'+ingredientSprite(x.name,x.group)+'<span class="ing-qty">'+x.qty+'</span><span class="ing-name">'+esc(titleCase(x.name))+'</span></button>').join(''):'<div class="empty"><strong>NO HAY INGREDIENTES</strong><p>Abre la despensa para añadir lo que tienes.</p></div>'}
 function titleCase(s){return String(s).replace(/\b\w/g,c=>c.toUpperCase())}
 function groupOf(name){const key=norm(name);if(['huevo','queso','pollo','atun','atún','leche','yogur'].includes(key))return 'proteina';if(['frijol','arroz','avena','tortilla','pasta','pan','tostada','harina'].includes(key))return 'grano';if(['jitomate','cebolla','papa','zanahoria','lechuga','calabacita','pepino','ajo','chile','espinaca','brocoli','brócoli'].includes(key))return 'verdura';if(['platano','plátano','manzana','naranja','limon','limón','fresa'].includes(key))return 'fruta';return 'otros'}
-function artOf(name){const g=groupOf(name),m=norm(name);const map={huevo:'egg',tortilla:'tortilla',frijol:'beans',arroz:'rice',avena:'oats',platano:'banana',jitomate:'tomato',cebolla:'onion',queso:'cheese',aceite:'oil',sal:'salt',papa:'potato',pan:'bread',pasta:'pasta',pollo:'plate',atun:'plate',zanahoria:'potato',ajo:'onion'};return map[m]||({verdura:'tomato',proteina:'egg',grano:'rice',fruta:'banana'}[g]||'potato')}
+function artOf(name){
+ const n=norm(name);
+ if(/tomate|jitomate/.test(n))return 'tomato';
+ if(/cebolla/.test(n))return 'onion';
+ if(/ajo/.test(n))return 'garlic';
+ if(/zanahoria/.test(n))return 'carrot';
+ if(/espinaca|lechuga|cilantro|perejil|brocoli|brócoli|calabacita/.test(n))return 'greens';
+ if(/huevo/.test(n))return 'egg';
+ if(/queso/.test(n))return 'cheese';
+ if(/tortilla|tostada/.test(n))return 'tortilla';
+ if(/frijol/.test(n))return 'beans';
+ if(/arroz/.test(n))return 'rice';
+ if(/avena/.test(n))return 'oats';
+ if(/platano|plátano|banana/.test(n))return 'banana';
+ if(/aguacate/.test(n))return 'avocado';
+ if(/limon|limón|naranja/.test(n))return 'citrus';
+ if(/papa|patata/.test(n))return 'potato';
+ if(/pan|bolillo/.test(n))return 'bread';
+ if(/pasta|espagueti/.test(n))return 'pasta';
+ if(/aceite/.test(n))return 'oil';
+ if(/sal$/.test(n))return 'salt';
+ if(/pollo|carne|res|cerdo|jamon|jamón|salchicha/.test(n))return 'chicken';
+ if(/atun|atún|pescado|sardina/.test(n))return 'fish';
+ if(/pepino|calabaza/.test(n))return 'cucumber';
+ if(/chile/.test(n))return 'chile';
+ if(/manzana/.test(n))return 'apple';
+ if(/fresa/.test(n))return 'berry';
+ if(/leche/.test(n))return 'milk';
+ if(/yogur/.test(n))return 'yogurt';
+ if(/harina/.test(n))return 'flour';
+ if(/canela|comino|pimienta|especia/.test(n))return 'spice';
+ if(/azucar|azúcar/.test(n))return 'sugar';
+ return 'basket';
+}
 function renderInventory(){const search=norm($('#pantrySearch').value);const list=state.inventory.filter(x=>(activePantryFilter==='todos'||x.group===activePantryFilter)&&(!search||norm(x.name).includes(search)));$('#pantryCount').textContent=state.inventory.filter(x=>x.qty>0).length+' ingredientes con existencias · '+state.inventory.length+' registrados';$$('[data-filter]').forEach(b=>b.classList.toggle('active',b.dataset.filter===activePantryFilter));$('#inventoryGrid').innerHTML=list.length?list.map(x=>'<article class="inv-card '+(x.qty<=1?'low':'')+'"><span class="ing-qty">'+(x.qty<=1?'POCO':'EN MOCHILA')+'</span>'+ingredientSprite(x.name,x.group)+'<div class="inv-title">'+esc(titleCase(x.name))+'</div><div class="inv-group">'+esc(groupLabel(x.group))+'</div><div class="qty-controls"><button data-qty="-1" data-name="'+esc(x.name)+'" aria-label="Quitar una unidad de '+esc(x.name)+'">−</button><span>'+x.qty+'</span><button data-qty="1" data-name="'+esc(x.name)+'" aria-label="Añadir una unidad de '+esc(x.name)+'">＋</button></div><button class="btn btn-small btn-quiet" data-remove="'+esc(x.name)+'" style="margin-top:3px;min-height:26px;padding:4px">QUITAR</button></article>').join(''):'<div class="empty" style="grid-column:1/-1"><strong>NO ENCONTRÉ ESE INGREDIENTE</strong><p>Prueba otra búsqueda o añádelo a tu cocina.</p></div>'}
 function groupLabel(g){return ({verdura:'Verdura',fruta:'Fruta',proteina:'Proteína',grano:'Grano',otros:'Otros'})[g]||'Otros'}
 function renderRecipes(){const term=norm($('#recipeSearch').value);let list=recipes.filter(r=>(activeRecipeFilter==='todos'||r.cat===activeRecipeFilter)&&(!term||norm(r.name+' '+r.items.join(' ')+' '+r.desc).includes(term)));if(!list.length){$('#recipeGrid').innerHTML='<div class="empty" style="grid-column:1/-1"><strong>NO HAY COINCIDENCIAS</strong><p>Intenta buscar otro ingrediente o categoría.</p></div>';return}$('#recipeGrid').innerHTML=list.map(r=>'<article class="recipe-card"><div class="recipe-art">'+dishArt(r.art,r.name)+'</div><div class="pixel-label">'+categoryNames[r.cat].toUpperCase()+'</div><h3 class="recipe-title">'+esc(r.name)+'</h3><p class="recipe-desc">'+esc(r.desc)+'</p><div class="recipe-meta"><span class="tag">◷ '+r.mins+' min</span><span class="tag">'+(missing(r).length?'Faltan '+missing(r).length:'Tienes los básicos')+'</span></div><button class="btn btn-small btn-dark" data-recipe="'+r.id+'">EXPLORAR RECETA ↗</button></article>').join('');$$('[data-recipe-filter]').forEach(b=>b.classList.toggle('active',b.dataset.recipeFilter===activeRecipeFilter))}
