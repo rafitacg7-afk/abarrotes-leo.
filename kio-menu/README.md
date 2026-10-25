@@ -23,3 +23,9 @@ HTML, CSS y JavaScript nativos, sin dependencias, cuentas, API ni servicios de p
 
 ## Abrir
 La app se publica en la subruta `/kio-menu/` del sitio GitHub Pages que la contiene. En Android, abre la URL en el navegador y usa el menú del navegador → **Agregar a pantalla de inicio**.
+
+## Sistema visual
+- Estándar: KIO VISUAL DNA v1.0.
+- Modo de esta app: Pixel Hybrid con detalles Pixel Adventure.
+- Biblioteca compartida: [kio-visual-dna.css](./kio-visual-dna.css).
+- Guía específica: [design-system.md](./design-system.md).
