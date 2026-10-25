@@ -1,4 +1,4 @@
-const CACHE = 'kio-menu-v03-immersive-1';
+const CACHE = 'kio-menu-v03-immersive-2';
 const ASSETS = [
   './',
   './index.html',
