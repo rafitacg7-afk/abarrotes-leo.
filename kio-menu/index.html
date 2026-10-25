@@ -118,7 +118,7 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}button:focus-vis
 .creator-credit{padding:10px 12px;background:linear-gradient(120deg,#173d2b,#254d35);color:#d9e3c7;border:1px solid #587451;text-align:left}
 .creator-credit strong{color:#f5d17b}.creator-credit:before{content:"◇";color:#62c7ca;font-size:13px;margin-right:7px}.creator-credit span{display:none}
 @media(max-width:420px){.brand-name{font-size:16px}.sig-note{font-size:5.5px}.map-node{max-width:46%;min-width:0}.map-node .node-name{max-width:92px}.recipe-card .recipe-art{min-height:105px}.recipe-card .dish-illustration{height:100px;min-height:100px}}
-.dish-illustration{display:block;width:100%;height:120px;background:linear-gradient(140deg,#173929,#315a40);overflow:hidden}.dish-illustration svg{display:block;width:100%;height:100%;shape-rendering:crispEdges}.recipe-card .dish-illustration{height:120px}.day-icon .dish-illustration{height:58px}.modal-food .dish-illustration{height:154px}</style>
+.dish-illustration{display:block;width:100%;height:120px;background:linear-gradient(140deg,#173929,#315a40);overflow:hidden}.dish-illustration svg{display:block;width:100%;height:100%;shape-rendering:crispEdges}.recipe-card .dish-illustration{height:120px}.day-icon .dish-illustration{height:58px}.modal-food .dish-illustration{height:154px}.kitchen-scene .kitchen-art{display:block;width:100%;height:auto;aspect-ratio:37/18;object-fit:cover}</style>
 </head>
 <body>
 <div class="app">
@@ -146,7 +146,7 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}button:focus-vis
   <div class="map-layout">
     <div class="map-scene-wrap">
       <div class="map-frame">
-        <img src="./realm.svg" class="map-art-img" alt="Valle de pixel art con caminos, casas, río y cascadas que conectan las cuatro comidas" width="432" height="540" fetchpriority="high">
+        <img src="./realm.svg" class="map-art-img" alt="Valle culinario pixel art con montañas, río, senderos, árboles y casitas" width="480" height="600" fetchpriority="high">
         <div class="map-banner"><strong>EL VALLE DE HOY</strong><span>Tu día se construye con lo que tienes.</span></div>
         <button class="map-node node-breakfast" data-meal="desayuno" aria-label="Abrir misión desayuno"><span class="node-icon" id="nodeIconDesayuno"></span><span class="node-copy"><span class="node-label">MISION 01</span><span class="node-name" id="nodeNameDesayuno">Desayuno</span><span class="node-state" id="nodeStateDesayuno">✦ Por descubrir</span></span></button>
         <button class="map-node node-lunch" data-meal="almuerzo" aria-label="Abrir misión almuerzo"><span class="node-icon" id="nodeIconAlmuerzo"></span><span class="node-copy"><span class="node-label">MISION 02</span><span class="node-name" id="nodeNameAlmuerzo">Almuerzo</span><span class="node-state" id="nodeStateAlmuerzo">✦ Por descubrir</span></span></button>
@@ -183,7 +183,7 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}button:focus-vis
 <section class="page" id="page-despensa" aria-labelledby="pantryTitle">
   <div class="section-head"><div><div class="kicker">TU COCINA EXPLORABLE</div><h1 class="title" id="pantryTitle">Mi despensa</h1><p class="sub">Toca los objetos para ajustar cantidades. La cocina es tu inventario.</p></div></div>
   <div class="kitchen-scene">
-    <img src="./kitchen.svg" class="kitchen-art" alt="Cocina pixel art con plantas, utensilios, estantes, comida y luz de ventana" width="540" height="405" loading="lazy">
+    <img src="./kitchen.svg" class="kitchen-art" alt="Cocina pixel art detallada con estantes, especias, utensilios, estufa y plantas" width="740" height="360" loading="lazy">
     <div class="scene-title">La cocina de Kio<span class="scene-sub">Toca tus ingredientes. Descubre lo que puedes preparar.</span></div>
   </div>
   <div class="section-head"><div><h2 class="section-title">DESPENSA ACTUAL</h2><div class="section-sub" id="pantryCount">0 ingredientes registrados</div></div><button class="btn btn-small" id="resetInventory">REINICIAR EJEMPLO</button></div>
