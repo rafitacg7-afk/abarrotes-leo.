@@ -1,4 +1,4 @@
-const CACHE = 'kio-menu-v02-art-1';
+const CACHE = 'kio-menu-v03-immersive-1';
 const ASSETS = [
   './',
   './index.html',
@@ -6,13 +6,8 @@ const ASSETS = [
   './icon.svg',
   './apple-touch-icon.png',
   './kio-visual-dna.css',
-  './assets/food/egg.webp',
-  './assets/food/chilaquiles.webp',
-  './assets/food/oats.webp',
-  './assets/food/tacos.webp',
-  './assets/food/sandwich.webp',
-  './assets/food/salad.webp',
-  './assets/food/soup.webp'
+  './realm.svg',
+  './kitchen.svg'
 ];
 
 self.addEventListener('install', event => {
