@@ -1,0 +1,20 @@
+{
+  "name": "KIO Menú — Cocina de aventura",
+  "short_name": "KIO Menú",
+  "description": "Un menú diario con estética pixel art, inventario y misiones culinarias.",
+  "lang": "es-MX",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f7f1e4",
+  "theme_color": "#183b2b",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
