@@ -1,5 +1,5 @@
-const CACHE = 'kio-menu-v01';
-const ASSETS = ['./', './index.html', './manifest.webmanifest', './icon.svg'];
+const CACHE = 'kio-menu-v01-1';
+const ASSETS = ['./', './index.html', './manifest.webmanifest', './icon.svg', './kio-visual-dna.css'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS)).then(() => self.skipWaiting()));
 });
