@@ -97,13 +97,13 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}button:focus-vis
 .recipe-grid{gap:12px}
 .recipe-card{background:linear-gradient(145deg,#fff9e8 0%,#efe1bf 100%);border:2px solid #2a4934;box-shadow:4px 4px 0 #193c2b;border-radius:2px}
 .recipe-card .recipe-art{background:#10291e;border:2px solid #355843;box-shadow:inset 0 0 0 2px #dca044;min-height:126px;overflow:hidden;padding:3px}
-.dish-illustration{width:100%;height:100%;min-height:0;background-image:url("./assets/dishes.webp");background-repeat:no-repeat;background-size:400% 300%;background-color:#10291e;image-rendering:auto}
+.dish-illustration{width:100%;height:100%;min-height:0;background-color:#10291e;image-rendering:auto}
 .recipe-card .dish-illustration{height:120px;width:100%;min-height:120px}
 .day-icon{background:#10291e;border:2px solid #d6b66f;overflow:hidden}
 .day-icon .dish-illustration{width:100%;height:58px}
 .modal-food{background:#10291e;overflow:hidden;border:2px solid #dca044}
 .modal-food .dish-illustration{width:100%;height:154px}
-.ingredient-portrait{display:block;width:44px;height:44px;background-image:url("./assets/ingredients.webp");background-size:300% 300%;background-repeat:no-repeat;background-color:#f3e5c5;image-rendering:auto}
+.ingredient-portrait{display:block;width:44px;height:44px;background-color:#f3e5c5;image-rendering:auto}
 .ingredient-object{background:linear-gradient(155deg,#fff4d7,#dfc48f);border-color:#2e4d37;box-shadow:2px 2px 0 #193c2b}
 .ingredient-object .ingredient-portrait{width:44px;height:44px}
 .inv-card{background:linear-gradient(145deg,#fff7de,#e8d6ad);border-color:#2b4934;box-shadow:2px 2px 0 #193c2b}
@@ -118,13 +118,13 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}button:focus-vis
 .creator-credit{padding:10px 12px;background:linear-gradient(120deg,#173d2b,#254d35);color:#d9e3c7;border:1px solid #587451;text-align:left}
 .creator-credit strong{color:#f5d17b}.creator-credit:before{content:"◇";color:#62c7ca;font-size:13px;margin-right:7px}.creator-credit span{display:none}
 @media(max-width:420px){.brand-name{font-size:16px}.sig-note{font-size:5.5px}.map-node{max-width:46%;min-width:0}.map-node .node-name{max-width:92px}.recipe-card .recipe-art{min-height:105px}.recipe-card .dish-illustration{height:100px;min-height:100px}}
-</style>
+.dish-illustration{display:block;width:100%;height:120px;background:linear-gradient(140deg,#173929,#315a40);overflow:hidden}.dish-illustration svg{display:block;width:100%;height:100%;shape-rendering:crispEdges}.recipe-card .dish-illustration{height:120px}.day-icon .dish-illustration{height:58px}.modal-food .dish-illustration{height:154px}</style>
 </head>
 <body>
 <div class="app">
 <header class="header">
   <div class="brand">
-    <div class="brand-icon" aria-hidden="true"><img src="./assets/kio-mark.png" alt="" width="48" height="48"></div>
+    <div class="brand-icon" aria-hidden="true"><img src="./icon.svg" alt="" width="48" height="48"></div>
     <div class="brand-copy"><div class="brand-name">KIO MENÚ</div><div class="brand-tag">TU COCINA, TU AVENTURA</div><div class="brand-signature" aria-label="Creación colaborativa de KIO y RAFA"><span class="sig-kio">KIO<span class="sig-prism">◇</span></span><span class="sig-cross">×</span><span class="sig-rafa">RAFA<span class="sig-spark">✦</span></span><span class="sig-note">IDEA × IA × OFICIO</span></div></div>
   </div>
   <div class="header-actions">
@@ -146,7 +146,7 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}button:focus-vis
   <div class="map-layout">
     <div class="map-scene-wrap">
       <div class="map-frame">
-        <img src="./assets/realm.webp" class="map-art-img" alt="Valle de pixel art con caminos, casas, río y cascadas que conectan las cuatro comidas" width="432" height="540" fetchpriority="high">
+        <img src="./realm.svg" class="map-art-img" alt="Valle de pixel art con caminos, casas, río y cascadas que conectan las cuatro comidas" width="432" height="540" fetchpriority="high">
         <div class="map-banner"><strong>EL VALLE DE HOY</strong><span>Tu día se construye con lo que tienes.</span></div>
         <button class="map-node node-breakfast" data-meal="desayuno" aria-label="Abrir misión desayuno"><span class="node-icon" id="nodeIconDesayuno"></span><span class="node-copy"><span class="node-label">MISION 01</span><span class="node-name" id="nodeNameDesayuno">Desayuno</span><span class="node-state" id="nodeStateDesayuno">✦ Por descubrir</span></span></button>
         <button class="map-node node-lunch" data-meal="almuerzo" aria-label="Abrir misión almuerzo"><span class="node-icon" id="nodeIconAlmuerzo"></span><span class="node-copy"><span class="node-label">MISION 02</span><span class="node-name" id="nodeNameAlmuerzo">Almuerzo</span><span class="node-state" id="nodeStateAlmuerzo">✦ Por descubrir</span></span></button>
@@ -183,7 +183,7 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}button:focus-vis
 <section class="page" id="page-despensa" aria-labelledby="pantryTitle">
   <div class="section-head"><div><div class="kicker">TU COCINA EXPLORABLE</div><h1 class="title" id="pantryTitle">Mi despensa</h1><p class="sub">Toca los objetos para ajustar cantidades. La cocina es tu inventario.</p></div></div>
   <div class="kitchen-scene">
-    <img src="./assets/kitchen.webp" class="kitchen-art" alt="Cocina pixel art con plantas, utensilios, estantes, comida y luz de ventana" width="540" height="405" loading="lazy">
+    <img src="./kitchen.svg" class="kitchen-art" alt="Cocina pixel art con plantas, utensilios, estantes, comida y luz de ventana" width="540" height="405" loading="lazy">
     <div class="scene-title">La cocina de Kio<span class="scene-sub">Toca tus ingredientes. Descubre lo que puedes preparar.</span></div>
   </div>
   <div class="section-head"><div><h2 class="section-title">DESPENSA ACTUAL</h2><div class="section-sub" id="pantryCount">0 ingredientes registrados</div></div><button class="btn btn-small" id="resetInventory">REINICIAR EJEMPLO</button></div>
@@ -305,7 +305,7 @@ else{s+='<rect x="18" y="21" width="28" height="23" fill="'+p[0]+'"/><rect x="23
 s+='<rect x="7" y="49" width="50" height="5" fill="#294d34"/></svg>';return s}
 function iconSvg(name){const paths={sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',bowl:'<path d="M3 12h18a9 9 0 0 1-18 0Z"/><path d="M7 8c0-2 2-2 2-4m5 4c0-2 2-2 2-4"/>',plate:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><path d="M3 3v6m-2-6v6m4-6v6M21 3v18"/>',moon:'<path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z"/><path d="m17 3 1 2 2 1-2 1-1 2-1-2-2-1 2-1Z"/>'};return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true">'+(paths[name]||paths.plate)+'</svg>'}
 function dishArt(kind,label){const files={egg:'egg',oats:'oats',taco:'tacos',tortilla:'quesadilla',cheese:'quesadilla',bread:'sandwich',rice:'ricebeans',plate:'chickensalad',beans:'enfrijoladas',soup:'soup',pasta:'pasta',potato:'potatoegg'};const spots={egg:[0,0],chilaquiles:[1,0],oats:[2,0],tacos:[3,0],sandwich:[0,1],soup:[1,1],quesadilla:[2,1],enfrijoladas:[3,1],ricebeans:[0,2],potatoegg:[1,2],pasta:[2,2],chickensalad:[3,2]};const file=files[kind]||'chilaquiles',p=spots[file]||spots.chilaquiles;const pos=(p[0]*100/3).toFixed(3)+'% '+(p[1]*50)+'%';return '<div class="dish-illustration" role="img" aria-label="'+esc(label||'Platillo')+'" style="background-position:'+pos+'"></div>'}
-function ingredientSprite(name,group){const key=norm(name);const direct={jitomate:[0,0],cebolla:[1,0],huevo:[2,0],tortilla:[0,1],frijol:[1,1],arroz:[2,1],papa:[0,2],platano:[1,2],queso:[2,2]};let p=direct[key];if(!p){const fallback={verdura:[0,0],fruta:[1,2],proteina:[2,0],grano:[2,1],otros:[2,2]};p=fallback[group]||[2,2]}const pos=(p[0]*50)+'% '+(p[1]*50)+'%';return '<div class="ingredient-portrait" role="img" aria-label="Ingrediente: '+esc(titleCase(name))+'" style="background-position:'+pos+'"></div>'}
+function ingredientSprite(name,group){return svgSprite(artOf(name),53)}
 function categoryIcon(cat){return iconSvg(cats.find(x=>x.id===cat)?.icon||'plate')}
 function modeLabel(){return ({ahorro:'MODO AHORRO',equilibrio:'MODO BALANCE',sorpresa:'MODO EXPLORADOR',rapido:'MODO EXPRÉS'})[state.mode]||'MODO AHORRO'}
 function setView(view){state.view=view;save();$$('.page').forEach(x=>x.classList.toggle('active',x.id==='page-'+(view==='mapa'?'map':view==='dia'?'dia':view)));$$('.nav-item').forEach(x=>x.classList.toggle('active',x.dataset.view===view));if(view==='despensa')renderInventory();if(view==='recetas')renderRecipes();if(view==='dia')renderDay();if(view==='mapa')renderMap();window.scrollTo({top:0,behavior:'smooth'})}
