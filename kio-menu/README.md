@@ -64,3 +64,11 @@ HTML, CSS y JavaScript nativos; sin dependencias ni servicios de pago.
 - **Platillos:** la aplicación genera ilustraciones inline con textura, volumen, sombras y colores por tipo de comida; no depende de un sprite pequeño externo para las tarjetas.
 - **Inventario:** los iconos de ingredientes se mantienen más simples de forma deliberada para facilitar el reconocimiento rápido.
 - **Créditos:** visibles de manera discreta en la interfaz y descritos en Ajustes.
+
+## KIO × RAFA — pulido visual v0.3
+- Marca visual: **KIO × RAFA**, una firma pequeña, integrada en la identidad de la app. KIO representa lógica, estructura y exploración; Rafa, visión creativa y dirección del producto.
+- `icon.svg`: emblema de pixel art para la cabecera, favicon y manifiesto PWA.
+- `realm.svg` y `kitchen.svg`: escenas detalladas con montaña, bosque, río, casas, luz de ventana, utensilios y estantes.
+- Los platillos se ilustran directamente en el código con capas de volumen, sombras, textura y detalles de ingredientes; los iconos de despensa conservan su forma sencilla para una lectura rápida.
+- El caché del Service Worker se versiona para actualizar la interfaz y sus escenas después de publicar.
+- **Límite de icono:** la cabecera, favicon y manifiesto usan la nueva marca SVG; la validación del icono de inicio en iOS debe confirmarse en un iPhone real.
