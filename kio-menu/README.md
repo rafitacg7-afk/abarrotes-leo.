@@ -1,4 +1,4 @@
-# KIO MENÚ v0.2 — Tu cocina, tu aventura
+# KIO MENÚ v0.4 — KIO × RAFA: una cocina ilustrada
 
 Aplicación web progresiva (PWA) con pixel art detallado y navegación tipo expedición culinaria.
 
@@ -10,7 +10,14 @@ Aplicación web progresiva (PWA) con pixel art detallado y navegación tipo expe
 - **KIO VISUAL DNA:** Pixel Hybrid con elementos de Pixel Adventure.
 - Diseño responsive, pensado para Android, iPhone y tabletas.
 
-## Funciones v0.2
+## Funciones v0.4 — detalle visual
+- Emblema culinario pixel art redibujado; icono para iOS actualizado en PNG y para navegadores en SVG.
+- Ilustración de cocina con estantes, ingredientes, utensilios, textura de madera y luz exterior.
+- Ilustración del valle ampliada con montañas, casas, puentes, río, camino, árboles y flores.
+- Ingredientes con ilustración SVG individual y texturas por producto, en vez de pictogramas genéricos.
+- Las recetas cargan imágenes culinarias individuales existentes; los recursos se precargan para el modo sin conexión.
+
+## Funciones de producto v0.4
 - Inventario local editable, búsqueda y filtros por categoría.
 - Generador heurístico con modos ahorro, balance, explorador y exprés.
 - Presupuesto orientativo para ingredientes faltantes.

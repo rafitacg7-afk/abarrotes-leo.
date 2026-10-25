@@ -49,3 +49,13 @@ El motor culinario de v0.2 usa reglas locales y recetas predeterminadas, no IA g
 - Las recetas y el resumen del día usan ilustraciones pixel art de platos, con textura, contraste y detalle mayores que los pictogramas pequeños de ingredientes.
 - Los pictogramas del inventario siguen siendo más simples a propósito: su objetivo es reconocimiento rápido y control de cantidades, no decoración.
 - Firma visual discreta: **“Una creación de KioRafa × ChatGPT”**; los créditos ampliados de Ajustes explican que KioRafa aporta concepto y dirección creativa, y ChatGPT participa en diseño e implementación.
+
+
+## KIO VISUAL DNA v1.2 — Ilustración culinaria con detalle
+- **Emblema:** el icono de KIO MENÚ muestra un plato ilustrado con distintos alimentos, brillos, capas y textura pixelada; el PNG de 180×180 es el icono de inicio de iOS y el SVG se utiliza en navegador/PWA.
+- **Ingrediente reconocible:** cada alimento de despensa debe tener una silueta y un conjunto de detalles propios (piel, hojas, granos, cáscara, etiqueta, corte o textura). No reciclar un glifo genérico para distintos productos salvo ingredientes desconocidos, que usan la ilustración de temporada como respaldo.
+- **Platos:** se muestran ilustraciones por familia de receta; arroz, quesadillas, pasta, papa, tostadas y enfrijoladas tienen escenas propias, y las ilustraciones existentes se reutilizan cuando son semánticamente adecuadas.
+- **Cocina y mapa:** las escenas deben parecer espacios habitables de un juego 16/32-bit, con planos de profundidad, luz, sombras, objetos pequeños y materiales identificables.
+- **Color:** verdes profundos de entorno; crema para porcelana/masa; ámbar para dorado y bordes; rojo tomate; verdes claros para hojas. Usar contraste suficiente para que el alimento siga siendo reconocible en tarjetas pequeñas.
+- **Interfaz:** conservar tamaños táctiles, texto legible y jerarquía de navegación. La ilustración puede ser rica sin convertir cada control en un objeto visual recargado.
+- **Créditos:** la firma se presenta como **KIO × RAFA**, visible pero discreta. Evitar promocionar nombres de herramientas como si fueran autores del producto.
