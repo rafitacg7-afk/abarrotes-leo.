@@ -1,7 +1,7 @@
 {
-  "name": "KIO Menú — Cocina de aventura",
+  "name": "KIO Menú — Tu cocina, tu aventura",
   "short_name": "KIO Menú",
-  "description": "Un menú diario con estética pixel art, inventario y misiones culinarias.",
+  "description": "Planifica cuatro comidas con una aventura pixel art, inventario y recetas.",
   "lang": "es-MX",
   "start_url": "./",
   "scope": "./",
@@ -10,6 +10,12 @@
   "background_color": "#f5efdf",
   "theme_color": "#193c2b",
   "icons": [
+    {
+      "src": "./apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
     {
       "src": "./icon.svg",
       "sizes": "any",

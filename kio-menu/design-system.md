@@ -1,23 +1,46 @@
-# KIO MENÚ — Implementación de KIO VISUAL DNA
+# KIO MENÚ v0.2 — KIO VISUAL DNA en práctica
 
-KIO MENÚ es la primera referencia práctica de KIO VISUAL DNA, en modo **Pixel Hybrid con presencia de Pixel Adventure**.
+KIO MENÚ es la primera referencia práctica de KIO VISUAL DNA. Esta versión usa **Pixel Hybrid** para controles y lectura, con **Pixel Adventure** para el mundo, las misiones y la exploración.
 
-## Aplicación del estándar
-- Paleta cálida con bosque, crema y ámbar.
-- Tipografía de interfaz de sistema y titulares pixelados.
-- Bordes definidos, cuadrícula y sombras duras.
-- Sprites de comida y progreso como misiones.
-- Interacción táctil y layout adaptado a móvil.
-- La receta, el inventario y los costos siguen siendo el centro; el juego no oculta la información práctica.
+## Dirección visual adoptada
+- **Mapa del día:** un valle ilustrado conecta desayuno, almuerzo, comida y cena. Los nodos son botones reales, no parte de una captura decorativa.
+- **Cocina explorable:** escena de cocina detallada antes del inventario de objetos/ingredientes.
+- **Recetario:** ilustraciones pixeladas de alimentos, ingredientes disponibles/faltantes y pasos legibles.
+- **Ruta del día:** muestra progreso real, cambio individual de receta y una lista de faltantes.
+- **Paleta:** bosque, crema, ámbar, cielo y coral. Los colores son tokens, no reglas inamovibles.
+- **Composición:** escenarios con detalle visual, pero los controles conservan jerarquía, contraste y áreas táctiles cómodas.
+- **Multiplataforma:** interfaz responsive y PWA para Android, iPhone e iPad.
+
+## Reglas de interacción
+1. El mapa funciona como navegación visual: cada parada abre o descubre una comida.
+2. Cambiar una misión no debe borrar las demás.
+3. Los controles con gestos deben tener equivalentes visibles.
+4. Las cantidades de inventario se editan explícitamente; la aplicación no supone que una lista de compras equivale a existencia real.
+5. Una misión marcada como completa representa una acción del usuario, no una estimación del sistema.
+6. La app puede compartirse por enlace, pero las despensas permanecen locales y no se sincronizan entre familiares.
+7. Los costos son aproximaciones por porción y deben rotularse como tales.
 
 ## Biblioteca reutilizable
-- `kio-visual-dna.css`: tokens y primitivas compartidas.
-- `icon.svg`: icono PWA.
-- `index.html`: aplicación de referencia.
-- `manifest.webmanifest` y `sw.js`: instalación y caché offline.
+- `kio-visual-dna.css`: tokens de color, tipografía, espacio y primitivas.
+- `index.html`: mapa, cocina, despensa, recetario, ajustes y lógica local.
+- `apple-touch-icon.png`: icono dedicado para la pantalla de inicio de iOS.
+- `icon.svg`: favicon / icono vectorial de la PWA.
+- `manifest.webmanifest`: identidad e iconos de instalación.
+- `sw.js`: caché offline versionada.
+- `README.md`: funciones, límites e instrucciones de instalación.
 
-## Reutilizar en otro proyecto
-Copiar `kio-visual-dna.css`, cargarlo antes de los estilos propios, y usar solo tokens/clases que se necesiten. Para un proyecto de cliente, conservar su marca y aplicar únicamente los principios compatibles.
+## Instalación
+- **Android:** abrir el enlace en Chrome y usar “Instalar aplicación” o “Agregar a pantalla de inicio”.
+- **iPhone/iPad:** abrir en Safari, pulsar “Compartir” → “Añadir a pantalla de inicio” y habilitar “Abrir como app web” si aparece.
+- Cada dispositivo mantiene su propio inventario. Compartir la URL no comparte datos ni crea sincronización.
 
-## Límite de esta versión
-La biblioteca es v1.0 inicial y usa CSS nativo. KIO MENÚ es una implementación de referencia, no una auditoría integral de accesibilidad ni una prueba de compatibilidad con todos los navegadores.
+## Criterios de revisión
+- El mapa debe leerse como paisaje y ruta, no como una cuadrícula de tarjetas.
+- El pixel art debe tener profundidad, luz y detalles; el detalle nunca debe reducir legibilidad.
+- Debe ser fácil generar el menú y reemplazar una sola comida.
+- El presupuesto y las existencias deben estar claramente diferenciados.
+- El flujo principal debe revisarse en teléfonos reales; el código o un simulador no sustituyen esa prueba.
+- Confirmar carga de hoja CSS, icono de iOS y caché actualizada tras publicar.
+
+## Límite
+El motor culinario de v0.2 usa reglas locales y recetas predeterminadas, no IA generativa. El costo es orientativo. La PWA está diseñada para ambas plataformas, pero su comportamiento debe confirmarse en iPhone y Android reales antes de considerarla validada en todos los dispositivos.

@@ -1,31 +1,54 @@
-# KIO MENÚ — Cocina de aventura
+# KIO MENÚ v0.2 — Tu cocina, tu aventura
 
-Aplicación web progresiva (PWA) en español, diseñada primero para Android y con interfaz pixel art.
+Aplicación web progresiva (PWA) con pixel art detallado y navegación tipo expedición culinaria.
 
-## Funciones v0.1
-- Inventario editable de ingredientes.
-- Generación heurística de desayuno, almuerzo, comida y cena.
-- Modos ahorro, práctico, explorador y exprés.
-- Estimación orientativa de costos por porción e ingredientes faltantes.
-- Recetas breves, cambio individual de plato y progreso de misiones.
-- Opción para priorizar comidas que no dependan de guardar sobras refrigeradas.
-- Persistencia local y caché básica para uso sin conexión tras la primera carga.
+## Dirección de diseño
+- **Mapa del día:** cuatro paradas interactivas, una por cada momento de comida.
+- **Cocina explorable:** inventario visual con cantidades editables.
+- **Recetario de descubrimientos:** ingredientes, pasos, tiempos, costos estimados y faltantes.
+- **Ruta del día:** cambiar un plato sin regenerar los demás y marcar misiones completas.
+- **KIO VISUAL DNA:** Pixel Hybrid con elementos de Pixel Adventure.
+- Diseño responsive, pensado para Android, iPhone y tabletas.
 
-## Tecnología
-HTML, CSS y JavaScript nativos, sin dependencias, cuentas, API ni servicios de pago. Los datos de inventario y preferencias permanecen en `localStorage` del navegador.
+## Funciones v0.2
+- Inventario local editable, búsqueda y filtros por categoría.
+- Generador heurístico con modos ahorro, balance, explorador y exprés.
+- Presupuesto orientativo para ingredientes faltantes.
+- Ajuste para no depender de conservar sobras refrigeradas.
+- Recetas y alternativas por comida.
+- Lista de faltantes para compartir.
+- Exportación JSON de respaldo.
+- Compartir enlace y listas con el mecanismo nativo cuando esté disponible.
+- Caché básica para abrir la aplicación sin conexión después de la primera carga.
+
+## Instalación en dispositivos
+### Android
+1. Abre el enlace en Chrome.
+2. En el menú del navegador, elige **Instalar aplicación** o **Agregar a pantalla de inicio**.
+
+### iPhone / iPad
+1. Abre el enlace en Safari.
+2. Toca **Compartir**.
+3. Elige **Añadir a pantalla de inicio**.
+4. Activa **Abrir como app web** si aparece y toca **Añadir**.
+
+La disponibilidad de la opción depende de la versión del sistema y del navegador. No requiere cuenta de desarrollador ni publicación en App Store para usarse de esta manera.
+
+## Datos y privacidad
+El inventario, la ruta y las preferencias se guardan en el almacenamiento local del navegador/dispositivo. No hay cuenta de usuario ni sincronización entre integrantes de la familia. Compartir el enlace no comparte el inventario.
 
 ## Límites conocidos
-- El motor de menú es heurístico, no inteligencia artificial.
-- Las recetas y costos son una base inicial; los precios son aproximados y no equivalen al costo de comprar paquetes completos.
-- La coincidencia de ingredientes depende de cómo se escriban.
-- No es un sistema de nutrición clínica ni sustituye las prácticas de inocuidad alimentaria.
-- No se sincroniza entre dispositivos.
+- El motor de menús se basa en reglas deterministas con algo de variación, no en un modelo de IA.
+- Los costos son aproximados por porción, no precios de paquetes ni una cotización de tienda.
+- El inventario inicial es un ejemplo: revisa y corrige cantidades reales.
+- No sustituye criterios de nutrición clínica ni de inocuidad alimentaria.
+- No se ha verificado todavía el comportamiento en todos los modelos de iPhone y Android.
 
-## Abrir
-La app se publica en la subruta `/kio-menu/` del sitio GitHub Pages que la contiene. En Android, abre la URL en el navegador y usa el menú del navegador → **Agregar a pantalla de inicio**.
+## Tecnología
+HTML, CSS y JavaScript nativos; sin dependencias ni servicios de pago.
+- `kio-visual-dna.css`: tokens de diseño compartidos.
+- `index.html`: interfaz y lógica de la app.
+- `manifest.webmanifest`: metadatos e iconos de instalación.
+- `apple-touch-icon.png`: icono de inicio para iOS.
+- `sw.js`: caché offline.
 
-## Sistema visual
-- Estándar: KIO VISUAL DNA v1.0.
-- Modo de esta app: Pixel Hybrid con detalles Pixel Adventure.
-- Biblioteca compartida: [kio-visual-dna.css](./kio-visual-dna.css).
-- Guía específica: [design-system.md](./design-system.md).
