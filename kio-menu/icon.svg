@@ -1,1 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" shape-rendering="crispEdges"><rect width="64" height="64" fill="#183b2b"/><rect x="10" y="20" width="44" height="25" fill="#f7f1e4"/><rect x="6" y="25" width="52" height="15" fill="#f7f1e4"/><rect x="15" y="23" width="34" height="19" fill="#92b8c5"/><rect x="19" y="27" width="26" height="11" fill="#245b40"/><rect x="20" y="27" width="8" height="6" fill="#e7a23f"/><rect x="30" y="30" width="7" height="6" fill="#e89a8a"/><rect x="39" y="27" width="5" height="5" fill="#cbdc8a"/><rect x="15" y="47" width="34" height="4" fill="#e7a23f"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180">
+<title>KIO × RAFA — marca de KIO MENÚ</title>
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#244f39"/><stop offset="1" stop-color="#0d241a"/></linearGradient>
+ <linearGradient id="bowl" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f7e9c3"/><stop offset="1" stop-color="#d8b77a"/></linearGradient>
+ <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f8d780"/><stop offset="1" stop-color="#c98a31"/></linearGradient>
+</defs>
+<rect x="5" y="5" width="170" height="170" rx="4" fill="url(#bg)" stroke="#dca044" stroke-width="5"/>
+<rect x="13" y="13" width="154" height="154" fill="none" stroke="#f5efdf" stroke-opacity=".35" stroke-width="2"/>
+<g shape-rendering="crispEdges" transform="translate(0 2)">
+ <rect x="42" y="92" width="96" height="11" fill="#a75b3e"/>
+ <path d="M39 91h102l-8 37q-43 21-86 0Z" fill="url(#bowl)" stroke="#f5efdf" stroke-width="4"/>
+ <path d="M48 92h84l-6 24q-36 14-72 0Z" fill="#dca044"/>
+ <rect x="56" y="99" width="14" height="11" fill="#e9d18e"/><rect x="78" y="103" width="12" height="9" fill="#61904e"/><rect x="98" y="98" width="15" height="11" fill="#b84f39"/><rect x="119" y="104" width="7" height="7" fill="#f5efdf"/>
+ <rect x="44" y="132" width="92" height="8" fill="#f5efdf"/><rect x="52" y="142" width="76" height="6" fill="#dca044"/>
+ <rect x="62" y="49" width="9" height="19" fill="#f5efdf"/><rect x="80" y="37" width="9" height="31" fill="#f5efdf"/><rect x="98" y="49" width="9" height="19" fill="#f5efdf"/>
+ <rect x="59" y="63" width="15" height="6" fill="#f5efdf"/><rect x="78" y="53" width="15" height="6" fill="#f5efdf"/><rect x="96" y="64" width="15" height="6" fill="#f5efdf"/>
+ <path d="M120 42 132 29 145 42 132 55Z" fill="#88c8c9" stroke="#d7f1e0" stroke-width="3"/><path d="M132 29v26" stroke="#d7f1e0" stroke-width="2"/>
+ <path d="M38 61 48 54 57 61 48 68Z" fill="url(#gold)"/><rect x="32" y="78" width="6" height="6" fill="#dca044"/><rect x="143" y="70" width="6" height="6" fill="#86ab63"/>
+ <rect x="34" y="114" width="7" height="7" fill="#dca044"/><rect x="140" y="119" width="7" height="7" fill="#dca044"/>
+</g>
+<rect x="25" y="25" width="7" height="7" fill="#dca044"/><rect x="149" y="29" width="5" height="5" fill="#88c8c9"/><rect x="26" y="148" width="6" height="6" fill="#88c8c9"/><rect x="149" y="147" width="7" height="7" fill="#dca044"/>
+</svg>

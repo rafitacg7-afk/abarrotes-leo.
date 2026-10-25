@@ -1,7 +1,7 @@
 {
-  "name": "KIO Menú — Tu cocina, tu aventura",
-  "short_name": "KIO Menú",
-  "description": "Planifica cuatro comidas con una aventura pixel art, inventario y recetas.",
+  "name": "KIO MENÚ · KIO × RAFA",
+  "short_name": "KIO MENÚ",
+  "description": "Una aventura culinaria creada por KIO y Rafa: pixel art detallado, despensa y recetas.",
   "lang": "es-MX",
   "start_url": "./",
   "scope": "./",
