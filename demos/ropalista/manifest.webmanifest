@@ -1,0 +1,19 @@
+{
+  "id": "./",
+  "name": "RopaLista fácil · KIO RAFA",
+  "short_name": "RopaLista",
+  "lang": "es-MX",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6f8f5",
+  "theme_color": "#265f47",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
