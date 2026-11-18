@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Cotizador de oficios · KIO RAFA</title>
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" href="./icon.svg" type="image/png">
+<link rel="apple-touch-icon" href="./icon.svg">
+<meta name="theme-color" content="#10201b">
+<style>
+:root{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color-scheme:dark;--bg:#0f1714;--panel:#1a2520;--panel2:#233229;--ink:#f4f8f4;--muted:#aebfb4;--line:#405347;--green:#b8e9bc;--gold:#f5d39d}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink)}main{max-width:600px;margin:auto;padding:22px 17px 50px}header{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:24px}.brand{font-weight:800;letter-spacing:.12em}.brand span{color:var(--green)}.pill{font-size:11px;padding:7px 10px;border:1px solid var(--line);border-radius:100px;color:var(--muted)}h1{font-size:clamp(29px,8vw,40px);letter-spacing:-.05em;line-height:1.06;margin:0 0 12px}p{color:var(--muted);line-height:1.55;font-size:14px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:19px;padding:18px;margin:15px 0}.panel h2{font-size:17px;margin:0 0 16px}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{margin:12px 0}.field label{font-size:12px;color:var(--muted);display:block;margin-bottom:7px}.field input,.field textarea,.field select{width:100%;padding:13px;border-radius:11px;background:#0d1712;border:1px solid var(--line);color:var(--ink);font-size:16px;min-height:44px}.field textarea{min-height:80px;resize:vertical}.result{background:linear-gradient(135deg,#24442c,#1b2e26);border-color:#5b8b68}.money{font-size:36px;font-weight:850;letter-spacing:-.05em;margin:6px 0;color:var(--green)}.summary{display:flex;justify-content:space-between;gap:12px;padding:7px 0;font-size:14px}.summary strong{font-variant-numeric:tabular-nums}button{border:0;min-height:46px;border-radius:12px;padding:12px 16px;cursor:pointer;font-weight:750;font-size:14px;background:var(--green);color:#102015}button.secondary{background:var(--panel2);color:var(--ink);border:1px solid var(--line)}button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid var(--gold);outline-offset:2px}.install-box{background:#253a2d;border-color:#597360}.install-box p{margin:7px 0 13px}.install-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.install-row button{min-width:190px}.install-status{font-size:12px;color:var(--muted)}.buttons{display:grid;grid-template-columns:1fr 1fr;gap:9px}.buttons button:first-child{grid-column:1/-1}pre{white-space:pre-wrap;word-break:break-word;background:#0e1813;border:1px solid var(--line);padding:15px;border-radius:12px;font-size:12px;line-height:1.6;color:#e3ede6}small{color:var(--muted);font-size:12px;line-height:1.5}#feedback{font-size:13px;color:var(--green);min-height:18px;margin-top:10px}@media(max-width:360px){.row{grid-template-columns:1fr}}
+</style>
+</head>
+<body><main>
+<header><div class="brand">KIO <span>RAFA</span></div><div class="pill">PILOTO · SIN SUSCRIPCIÓN</div></header>
+<h1>Cotiza un trabajo<br>sin perder cuentas.</h1>
+<p>Presupuestos de pintura, electricidad, construcción y mantenimiento. Introduce los importes reales, calcula el total y copia el resultado para WhatsApp. Sin cuenta ni suscripción.</p>
+<section class="panel install-box" id="installPanel"><h2>Instalar en este celular</h2><p>Después de abrir esta app una vez desde una dirección segura, puedes instalarla y usarla sin conexión. No hay cuota de uso.</p><div class="install-row"><button type="button" id="installApp" hidden>Instalar aplicación</button><span class="install-status" id="installState">En Android: Chrome · menú ⋮ · Agregar a pantalla de inicio · Instalar.</span></div></section>
+<section class="panel"><h2>1 · Datos del trabajo</h2>
+<div class="field"><label for="job">Tipo de servicio</label><select id="job"><option>Pintura</option><option>Electricidad</option><option>Albañilería / construcción</option><option>Mantenimiento general</option><option>Otro trabajo</option></select></div>
+<div class="field"><label for="client">Cliente / referencia (opcional)</label><input id="client" maxlength="80" placeholder="Ej. Cliente de calle Centro"></div>
+<div class="field"><label for="desc">Descripción de lo que incluye</label><textarea id="desc" maxlength="600" placeholder="Ej. Preparación y pintura de muro, materiales acordados…"></textarea></div>
+<div class="row">
+<div class="field"><label for="qty">Cantidad de trabajo</label><input id="qty" type="number" min="0" max="1000000" step="any" value="1" inputmode="decimal"></div>
+<div class="field"><label for="unit">Unidad</label><select id="unit"><option value="trabajo">Trabajo</option><option value="m²">m²</option><option value="hora">Hora</option><option value="día">Día</option><option value="punto">Punto</option></select></div>
+</div>
+<div class="field"><label for="rate">Cobro por unidad (MXN)</label><input id="rate" type="number" min="0" max="100000000" step="any" value="0" inputmode="decimal"></div>
+</section>
+<section class="panel"><h2>2 · Gastos, anticipos y condiciones</h2>
+<div class="row"><div class="field"><label for="materials">Materiales (MXN)</label><input id="materials" type="number" min="0" step="any" value="0" inputmode="decimal"></div><div class="field"><label for="other">Traslados / otros (MXN)</label><input id="other" type="number" min="0" step="any" value="0" inputmode="decimal"></div></div>
+<div class="field"><label for="advance">Anticipo recibido o por solicitar (MXN)</label><input id="advance" type="number" min="0" step="any" value="0" inputmode="decimal"></div>
+<div class="field"><label for="notes">Plazo y condiciones acordadas (opcional)</label><textarea id="notes" maxlength="500" placeholder="Ej. Sujeto a revisión del lugar; vigencia y fecha por confirmar"></textarea></div>
+<button type="button" class="secondary" id="sample">Cargar ejemplo ficticio</button></section>
+<section class="panel result"><h2>3 · Presupuesto calculado</h2>
+<small>Importe total estimado</small><div class="money" id="total">$0.00</div>
+<div class="summary"><span>Trabajo / mano de obra</span><strong id="labor">$0.00</strong></div>
+<div class="summary"><span>Materiales y otros</span><strong id="supplies">$0.00</strong></div>
+<div class="summary"><span>Anticipo indicado</span><strong id="advanceView">$0.00</strong></div>
+<hr style="border:0;border-top:1px solid #5e7a64"><div class="summary"><span>Saldo después de anticipo</span><strong id="balance">$0.00</strong></div>
+<div id="feedback" aria-live="polite"></div>
+<div class="buttons"><button type="button" id="copy">Copiar presupuesto para WhatsApp</button><button type="button" class="secondary" id="save">Guardar .txt</button><button type="button" class="secondary" id="clear">Limpiar</button></div></section>
+<section class="panel"><h2>Vista del mensaje</h2><pre id="preview"></pre></section>
+<small>Prototipo piloto. La cotización que estés editando puede permanecer guardada en este dispositivo; evita datos sensibles en celulares compartidos. Demostración privada, con datos exclusivamente locales. No registra clientes ni envía mensajes. Los cálculos no incluyen impuestos o estimaciones de materiales por superficie. El responsable del oficio debe revisar medidas, insumos, seguridad, alcance y condiciones antes de enviar una cotización real.</small>
+</main>
+<script>
+(function(){'use strict';
+const $=id=>document.getElementById(id);
+const ids=['job','client','desc','qty','unit','rate','materials','other','advance','notes'];
+const STORE='kio-cotizador-borrador-v2';
+function guardarBorrador(){try{const v={};for(const id of ids)v[id]=$(id).value;localStorage.setItem(STORE,JSON.stringify(v));}catch(_){}}
+function restaurarBorrador(){try{const raw=localStorage.getItem(STORE);if(!raw)return;const v=JSON.parse(raw);if(!v||typeof v!=='object')return;for(const id of ids){if(typeof v[id]==='string')$(id).value=v[id].slice(0,800);}}catch(_){}}
+
+const money=n=>new Intl.NumberFormat('es-MX',{style:'currency',currency:'MXN'}).format(n);
+function num(id){const x=Number($(id).value);return Number.isFinite(x)&&x>0?Math.min(x,1e9):0;}
+function calculate(){const labor=num('qty')*num('rate'),supplies=num('materials')+num('other');const total=labor+supplies;const advance=num('advance');const balance=Math.max(0,total-advance);return {labor,supplies,total,advance,balance};}
+function quote(){const c=calculate(),client=$('client').value.trim(),description=$('desc').value.trim(),notes=$('notes').value.trim();return ['PRESUPUESTO ESTIMADO DE TRABAJO',`Servicio: ${$('job').value}`,client?`Referencia: ${client}`:'',description?`Incluye: ${description}`:'',`Cantidad: ${num('qty')} ${$('unit').value}`,`Trabajo: ${money(c.labor)}`,`Materiales: ${money(num('materials'))}`,`Traslados y otros: ${money(num('other'))}`,`TOTAL ESTIMADO: ${money(c.total)}`,`Anticipo indicado: ${money(c.advance)}`,`SALDO: ${money(c.balance)}`,notes?`Condiciones: ${notes}`:'','Cotización sujeta a revisión y aceptación antes de iniciar.'].filter(Boolean).join('\n');}
+function render(){const c=calculate();$('total').textContent=money(c.total);$('labor').textContent=money(c.labor);$('supplies').textContent=money(c.supplies);$('advanceView').textContent=money(c.advance);$('balance').textContent=money(c.balance);$('preview').textContent=quote();$('feedback').textContent=c.advance>c.total?'Atención: el anticipo indicado supera el total calculado. Revisa los importes.':'';}
+ids.forEach(id=>$(id).addEventListener('input',()=>{render();guardarBorrador();}));
+$('sample').addEventListener('click',()=>{const data={job:'Pintura',client:'Ejemplo ficticio',desc:'Pintar 20 m² de muro (solo ejemplo de cálculo)',qty:'20',unit:'m²',rate:'45',materials:'350',other:'100',advance:'500',notes:'Precios ficticios; verificar medidas, materiales y alcances antes de cotizar.'};for(const [k,v] of Object.entries(data))$(k).value=v;render();guardarBorrador();});
+$('clear').addEventListener('click',()=>{for(const id of ids){if(['job','unit'].includes(id))$(id).selectedIndex=0;else if(['qty','rate','materials','other','advance'].includes(id))$(id).value=id==='qty'?'1':'0';else $(id).value='';}try{localStorage.removeItem(STORE)}catch(_){}render();});
+$('copy').addEventListener('click',async()=>{const value=quote();try{await navigator.clipboard.writeText(value);$('feedback').textContent='Presupuesto copiado. Puedes pegarlo en WhatsApp.';}catch(e){const temp=document.createElement('textarea');temp.value=value;document.body.appendChild(temp);temp.select();let ok=false;try{ok=document.execCommand('copy')}catch(_){}temp.remove();$('feedback').textContent=ok?'Presupuesto copiado.':'No se pudo copiar aquí; selecciona el texto de «Vista del mensaje».';}});
+$('save').addEventListener('click',()=>{const file=new Blob([quote()],{type:'text/plain;charset=utf-8'});const a=document.createElement('a');const url=URL.createObjectURL(file);a.href=url;a.download='presupuesto_oficio.txt';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);});
+restaurarBorrador();render();window.KIO_COTIZADOR={calculate,quote};
+})();
+</script>
+<script>
+(function(){'use strict';
+let deferred=null;const button=document.getElementById('installApp');const state=document.getElementById('installState');
+if('serviceWorker' in navigator&&window.isSecureContext){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));}
+window.addEventListener('beforeinstallprompt',ev=>{ev.preventDefault();deferred=ev;button.hidden=false;state.textContent='Instala para abrirla desde tu pantalla de inicio.';});
+button.addEventListener('click',async()=>{if(!deferred){state.textContent='En Chrome, usa ⋮ > Agregar a pantalla de inicio.';return;}const prompt=deferred;deferred=null;button.hidden=true;await prompt.prompt();});
+window.addEventListener('appinstalled',()=>{button.hidden=true;state.textContent='Aplicación instalada. Ya puedes usarla desde tu pantalla de inicio.';});
+if(window.matchMedia&&window.matchMedia('(display-mode: standalone)').matches){document.getElementById('installPanel').hidden=true;}
+})();
+</script>
+</body></html>
